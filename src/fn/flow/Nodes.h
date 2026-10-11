@@ -72,5 +72,9 @@ void claimPin(int pin, const char* owner);
 const char* pinOwner(int pin);
 // Checks a pin for a flow block; returns "" when fine, otherwise the reason.
 String pinProblem(int pin, bool output);
+// A module that moves to another pin gives the old one back first.
+void releasePin(int pin, const char* owner);
+// Every claimed pin whose owner is not `owner` (what a device may not take over).
+std::vector<int> pinsClaimedByOthers(const char* owner);
 
 }  // namespace fn

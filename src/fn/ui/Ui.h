@@ -26,6 +26,7 @@ const char* sourceName(Source s);
 
 struct Widget {
   String id, label, unit, page, icon;
+  String device;           // id of the device module behind the card; the card menu then offers its pin settings
   WidgetType type = WidgetType::Value;
   float min = 0, max = 100, step = 1;
   uint8_t size = 1;        // grid columns: 1 small, 2 wide, 3 full row
@@ -78,6 +79,7 @@ public:
   Page& unit(const char* u);
   Page& decimals(uint8_t d);
   Page& role(uint8_t minRoleToChange);
+  Page& device(const char* deviceId);   // the module (a PinDevice) that owns this card
   Page& every(uint32_t chartSampleMs);
 
   const String& id() const { return id_; }
