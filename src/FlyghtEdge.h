@@ -35,6 +35,9 @@
 #include "fn/dev/Gps.h"      // UART GPS map (Leaflet)
 #include "fn/dev/McuLink.h"  // UART external MCU console + telemetry
 #include "fn/dev/Light.h"    // LEDs: plain (digital / PWM) and RGB, colour picker + effects
+#include "fn/dev/Sensors.h"  // DHT, DS18B20, ultrasonic, analog (water level, gas, current), digital, MH-Z19 CO2, PZEM, INA219
+#include "fn/dev/Motors.h"   // DC motor (H-bridge), brushless (ESC), stepper (step/dir); pins movable from the card menu
+#include "fn/dev/Relay.h"    // 1-16 relay channels (active-high / low, latching), pins movable from the card menu
 
 // Visual flows (Pro): connect triggers, logic and device blocks in the browser.
 #include "fn/flow/Flows.h"
