@@ -1,4 +1,4 @@
-// FlyghtNinno — the one address a build carries for Flyght Cloud.
+// FlyghtEdge — the one address a build carries for Flyght Cloud.
 //
 // Moving the cloud to another address never needs every sketch to be rebuilt:
 //

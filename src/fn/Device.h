@@ -1,4 +1,4 @@
-// FlyghtNinno — batteries-included preset.
+// FlyghtEdge — batteries-included preset.
 //
 //   fn::Device dev("lampu-pintar");
 //   dev.page("Kontrol").toggle("lampu", "Lampu", [](bool on) { digitalWrite(2, on); });

@@ -1,10 +1,10 @@
-// FlyghtNinno — ESP32 dashboard on your phone in 5 lines.
+// FlyghtEdge — ESP32 dashboard on your phone in 5 lines.
 // https://github.com/flyght-ninno/FlyghtNinno
-// (c) 2026 flyght-ninno. FlyghtNinno Community License 1.1 - see LICENSE.
+// (c) 2026 flyght-ninno. FlyghtEdge Community License 1.1 - see LICENSE.
 //
 // Quick start:
 //
-//   #include <FlyghtNinno.h>
+//   #include <FlyghtEdge.h>
 //   fn::Device dev("smart-lamp");
 //   void setup() {
 //     pinMode(2, OUTPUT);
@@ -20,7 +20,7 @@
 
 #include <esp_arduino_version.h>
 #if !defined(ESP_ARDUINO_VERSION_MAJOR) || ESP_ARDUINO_VERSION_MAJOR < 3
-#error "FlyghtNinno needs the ESP32 Arduino core 3.x (Tools > Board > Boards Manager > esp32)"
+#error "FlyghtEdge needs the ESP32 Arduino core 3.x (Tools > Board > Boards Manager > esp32)"
 #endif
 
 #include "fn/core/Deps.h"  // core libraries the (precompiled) library links against

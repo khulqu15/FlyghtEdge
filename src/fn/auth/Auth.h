@@ -1,4 +1,4 @@
-// FlyghtNinno — login, guest access, persistent sessions, users & roles, API tokens.
+// FlyghtEdge — login, guest access, persistent sessions, users & roles, API tokens.
 //
 // Sessions are stateless HMAC-signed tokens (see pure::tokenSign). The signing
 // secret lives in NVS, so a session survives Wi-Fi reconnects AND reboots.

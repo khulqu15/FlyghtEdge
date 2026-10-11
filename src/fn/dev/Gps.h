@@ -1,4 +1,4 @@
-// FlyghtNinno — GPS / GNSS receiver over UART (NMEA: u-blox, ATGM336H, Quectel ...).
+// FlyghtEdge — GPS / GNSS receiver over UART (NMEA: u-blox, ATGM336H, Quectel ...).
 //
 //   fn::Gps gps(/*rx*/ 16, /*tx*/ 17);      // 9600 baud on Serial1
 //   dev.use(gps);

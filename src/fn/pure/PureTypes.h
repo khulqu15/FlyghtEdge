@@ -1,4 +1,4 @@
-// FlyghtNinno — small value types shared by public headers (Wi-Fi backoff,
+// FlyghtEdge — small value types shared by public headers (Wi-Fi backoff,
 // login throttle, GPS fix, colours, light effects). The logic behind them
 // lives in Pure.cpp / Pure.h, which are internal.
 #pragma once

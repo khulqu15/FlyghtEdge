@@ -1,4 +1,4 @@
-// FlyghtNinno — SoftAP that stays visible.
+// FlyghtEdge — SoftAP that stays visible.
 //
 // Modes: Always (default), Fallback (only while station Wi-Fi is down), Off.
 // A watchdog re-applies SSID/IP if the interface ever drops, and DHCP option

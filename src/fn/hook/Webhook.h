@@ -1,4 +1,4 @@
-// FlyghtNinno — outbound HTTP webhook for external systems (Node-RED, n8n,
+// FlyghtEdge — outbound HTTP webhook for external systems (Node-RED, n8n,
 // Zapier, your own backend...).
 //
 // POSTs JSON when widget values change (debounced) and/or on an interval:

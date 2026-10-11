@@ -1,4 +1,4 @@
-// FlyghtNinno — captive portal: the dashboard opens by itself when a phone or
+// FlyghtEdge — captive portal: the dashboard opens by itself when a phone or
 // laptop joins the access point.
 //
 // How it works:

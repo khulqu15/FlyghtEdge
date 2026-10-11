@@ -1,4 +1,4 @@
-// FlyghtNinno — shared I2C helpers for device modules (BNO055, LCD, ...).
+// FlyghtEdge — shared I2C helpers for device modules (BNO055, LCD, ...).
 #pragma once
 
 #include <Wire.h>

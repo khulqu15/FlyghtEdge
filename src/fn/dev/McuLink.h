@@ -1,4 +1,4 @@
-// FlyghtNinno — link to an external microcontroller over UART (Arduino Uno,
+// FlyghtEdge — link to an external microcontroller over UART (Arduino Uno,
 // STM32, RP2040, another ESP ...). Line based and human readable.
 //
 //   fn::McuLink mcu(/*rx*/ 18, /*tx*/ 19, 115200);

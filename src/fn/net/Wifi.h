@@ -1,4 +1,4 @@
-// FlyghtNinno — station Wi-Fi that behaves well for months.
+// FlyghtEdge — station Wi-Fi that behaves well for months.
 //
 // * Up to 8 saved networks (home, office, hotspot...), tried by priority;
 //   if one fails the next is used automatically. No hardcoded password needed:

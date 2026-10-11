@@ -1,4 +1,4 @@
-// FlyghtNinno — building blocks for Visual flows.
+// FlyghtEdge — building blocks for Visual flows.
 //
 // Any module can add blocks; fn::Flows (the engine and editor) picks them up.
 // A block runs on the loop task, gets its parameters (with {value} filled in)

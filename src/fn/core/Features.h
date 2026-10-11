@@ -1,4 +1,4 @@
-// FlyghtNinno — editions (Free / Pro / Enterprise) and feature switches.
+// FlyghtEdge — editions (Free / Pro / Enterprise) and feature switches.
 //
 // Each feature has a minimum edition and a default state. A feature is ON
 // only when the edition allows it AND it is switched on (in code or in

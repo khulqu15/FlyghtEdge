@@ -1,4 +1,4 @@
-// FlyghtNinno — Bosch BNO055 absolute orientation sensor (I2C), no extra library.
+// FlyghtEdge — Bosch BNO055 absolute orientation sensor (I2C), no extra library.
 //
 //   fn::Bno055 imu;                 // 0x28 on the default Wire pins
 //   imu.pins(8, 9).rate(50);        // optional

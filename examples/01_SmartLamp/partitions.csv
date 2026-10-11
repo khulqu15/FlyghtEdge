@@ -1,5 +1,5 @@
-# FlyghtNinno partition table for 4 MB flash: two 1.94 MB app slots (OTA) + NVS.
-# FlyghtNinno keeps all settings in NVS, so no SPIFFS/LittleFS partition is needed.
+# FlyghtEdge partition table for 4 MB flash: two 1.94 MB app slots (OTA) + NVS.
+# FlyghtEdge keeps all settings in NVS, so no SPIFFS/LittleFS partition is needed.
 # Copy this file next to your .ino (Arduino uses a sketch-local partitions.csv).
 # Name,   Type, SubType, Offset,  Size,     Flags
 nvs,      data, nvs,     0x9000,  0x5000,

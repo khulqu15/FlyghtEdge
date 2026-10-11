@@ -1,4 +1,4 @@
-// FlyghtNinno — lights: plain LEDs (digital / PWM) and RGB LEDs (onboard
+// FlyghtEdge — lights: plain LEDs (digital / PWM) and RGB LEDs (onboard
 // WS2812 "RGB_BUILTIN", or 3-pin PWM), with non-blocking millis() effects.
 //
 //   fn::Led status(2);                       // plain LED on GPIO2 (PWM dimming)

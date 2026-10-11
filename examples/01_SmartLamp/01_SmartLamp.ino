@@ -1,4 +1,4 @@
-// FlyghtNinno — 01 Smart Lamp
+// FlyghtEdge — 01 Smart Lamp
 //
 // 1. Upload, then join the Wi-Fi "smart-lamp-XXXX" from your phone.
 // 2. The dashboard opens by itself. Create the admin password (first time).
@@ -7,7 +7,7 @@
 // Later, open http://smart-lamp-xxxx.local from any device on that Wi-Fi.
 // Tools > Partition Scheme: "No FS 4MB (2MB APP x2)" (see partitions.csv).
 
-#include <FlyghtNinno.h>
+#include <FlyghtEdge.h>
 
 // License key (API_KEY). Put it in a secrets.h next to this sketch, kept out of
 // version control:   #define FN_LICENSE_KEY "fnk_live_..."

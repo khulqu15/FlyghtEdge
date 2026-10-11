@@ -1,11 +1,11 @@
-// FlyghtNinno — 04 Modular app (pick only what you need)
+// FlyghtEdge — 04 Modular app (pick only what you need)
 //
 // fn::Device bundles everything. fn::App lets you choose modules one by one;
 // anything you leave out is not linked, so the firmware gets smaller.
 // Here: setup AP + captive portal + mDNS + login + dashboard. No station
 // Wi-Fi, MQTT or webhook — e.g. a stand-alone field instrument.
 
-#include <FlyghtNinno.h>
+#include <FlyghtEdge.h>
 
 // License key (API_KEY). Put it in a secrets.h next to this sketch, kept out of
 // version control:   #define FN_LICENSE_KEY "fnk_live_..."

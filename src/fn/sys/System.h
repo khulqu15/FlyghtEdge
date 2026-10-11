@@ -1,4 +1,4 @@
-// FlyghtNinno — device info, health of every module, logs, restart, factory
+// FlyghtEdge — device info, health of every module, logs, restart, factory
 // reset, firmware update (OTA upload) and clock sync.
 #pragma once
 

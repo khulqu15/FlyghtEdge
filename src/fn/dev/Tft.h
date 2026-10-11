@@ -1,4 +1,4 @@
-// FlyghtNinno — SPI TFT screen with a live web mirror and drawing tools.
+// FlyghtEdge — SPI TFT screen with a live web mirror and drawing tools.
 //
 // Built-in drivers (no extra library): ST7789 (240x240, 240x320, 135x240,
 // 170x320) and ILI9341 (240x320). Any other display works through GfxTarget,

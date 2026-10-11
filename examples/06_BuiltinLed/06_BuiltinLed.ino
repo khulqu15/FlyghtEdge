@@ -1,4 +1,4 @@
-// FlyghtNinno — 06 Builtin LED: the onboard LED, a colour picker, effects and Visual flows.
+// FlyghtEdge — 06 Builtin LED: the onboard LED, a colour picker, effects and Visual flows.
 //
 // No sensors needed: this tests everything with the LED that is already on
 // the board.
@@ -13,7 +13,7 @@
 //
 // Tools > Partition Scheme: "No FS 4MB (2MB APP x2)" or use the partitions.csv here.
 
-#include <FlyghtNinno.h>
+#include <FlyghtEdge.h>
 
 // License key (API_KEY). Put it in a secrets.h next to this sketch, kept out of
 // version control:   #define FN_LICENSE_KEY "fnk_live_..."

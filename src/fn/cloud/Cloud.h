@@ -1,4 +1,4 @@
-// FlyghtNinno — Flyght Cloud: claim the device, then mirror the dashboard over MQTT.
+// FlyghtEdge — Flyght Cloud: claim the device, then mirror the dashboard over MQTT.
 //
 //   dev.cloud().enable();                 // off by default; or turn it on from the dashboard
 //   dev.license(FN_LICENSE_KEY);          // the same key is the claim key

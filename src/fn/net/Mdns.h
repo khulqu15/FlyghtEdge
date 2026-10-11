@@ -1,8 +1,8 @@
-// FlyghtNinno — mDNS that keeps http://<hostname>.local reachable.
+// FlyghtEdge — mDNS that keeps http://<hostname>.local reachable.
 //
 // Starts once an interface is up, restarts on every IP change, refreshes
 // periodically for long-running devices, and advertises _flyght._tcp so apps
-// can discover every FlyghtNinno device on the LAN.
+// can discover every FlyghtEdge device on the LAN.
 #pragma once
 
 #include "../web/Web.h"

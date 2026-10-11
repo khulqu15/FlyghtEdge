@@ -1,4 +1,4 @@
-// FlyghtNinno — MQTT bridge for every dashboard widget (uses esp-mqtt from
+// FlyghtEdge — MQTT bridge for every dashboard widget (uses esp-mqtt from
 // the ESP32 core; no extra library).
 //
 // Topics (base defaults to "flyght/{id}"):

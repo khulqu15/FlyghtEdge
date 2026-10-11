@@ -1,4 +1,4 @@
-// FlyghtNinno — dashboard widgets declared from C++, no HTML required.
+// FlyghtEdge — dashboard widgets declared from C++, no HTML required.
 //
 //   ui.page("Kontrol", "home")
 //     .toggle("lampu", "Lampu Teras", [](bool on) { digitalWrite(2, on); })

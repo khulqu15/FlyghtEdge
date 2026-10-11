@@ -1,4 +1,4 @@
-// FlyghtNinno — SD card (SPI on every ESP32, or SDMMC on ESP32/S3) + web file manager.
+// FlyghtEdge — SD card (SPI on every ESP32, or SDMMC on ESP32/S3) + web file manager.
 //
 //   fn::SdCard sd(5);                 // SPI, CS = GPIO5, default SPI pins
 //   sd.pins(18, 19, 23);              // optional SCK, MISO, MOSI

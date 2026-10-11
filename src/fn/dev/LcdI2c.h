@@ -1,4 +1,4 @@
-// FlyghtNinno — HD44780 character LCD on a PCF8574 I2C backpack (16x2, 20x4 ...).
+// FlyghtEdge — HD44780 character LCD on a PCF8574 I2C backpack (16x2, 20x4 ...).
 //
 //   fn::LcdI2c lcd(16, 2);           // address auto-detected (0x27 / 0x3F)
 //   dev.use(lcd);

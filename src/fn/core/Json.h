@@ -1,4 +1,4 @@
-// FlyghtNinno — thin RAII wrapper over cJSON (bundled with the ESP32 core).
+// FlyghtEdge — thin RAII wrapper over cJSON (bundled with the ESP32 core).
 //
 //   fn::Json j;
 //   j.set("ok", true).set("ip", WiFi.localIP().toString());

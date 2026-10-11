@@ -1,4 +1,4 @@
-// FlyghtNinno — 05 Devices: IMU + LCD (I2C), SD + TFT (SPI), GPS + MCU (UART)
+// FlyghtEdge — 05 Devices: IMU + LCD (I2C), SD + TFT (SPI), GPS + MCU (UART)
 //
 // Every device is optional: delete the lines you don't need and nothing of it
 // ends up in the firmware. Each one adds its own page under "Devices":
@@ -7,7 +7,7 @@
 // Default pins below are picked per chip; change them to match your wiring.
 // Tools > Partition Scheme: "No FS 4MB (2MB APP x2)" (see partitions.csv).
 
-#include <FlyghtNinno.h>
+#include <FlyghtEdge.h>
 
 // License key (API_KEY). Put it in a secrets.h next to this sketch, kept out of
 // version control:   #define FN_LICENSE_KEY "fnk_live_..."

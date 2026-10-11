@@ -1,4 +1,4 @@
-// FlyghtNinno — small NVS key/value store, one namespace per module.
+// FlyghtEdge — small NVS key/value store, one namespace per module.
 //
 // NVS limits namespace and key names to 15 characters, so modules use
 // namespaces like "fn.wifi" and short keys.

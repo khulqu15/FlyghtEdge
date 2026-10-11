@@ -1,4 +1,4 @@
-// FlyghtNinno — shared contracts: roles, events, scheduler, module base class.
+// FlyghtEdge — shared contracts: roles, events, scheduler, module base class.
 #pragma once
 
 #include <Arduino.h>

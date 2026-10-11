@@ -1,4 +1,4 @@
-// FlyghtNinno — Visual flows: automations built by connecting blocks
+// FlyghtEdge — Visual flows: automations built by connecting blocks
 // (like a Figma prototype or Blender's node editor), stored on the device.
 //
 //   fn::Flows flows;

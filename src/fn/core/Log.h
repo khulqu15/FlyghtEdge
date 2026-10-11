@@ -1,4 +1,4 @@
-// FlyghtNinno — tagged logging with an in-memory ring buffer.
+// FlyghtEdge — tagged logging with an in-memory ring buffer.
 //
 //   FN_LOGI("wifi", "Connected ip=%s", ip.c_str());
 //

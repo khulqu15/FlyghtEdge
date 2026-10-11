@@ -1,4 +1,4 @@
-// FlyghtNinno — HTTP + WebSocket server on top of ESP-IDF esp_http_server.
+// FlyghtEdge — HTTP + WebSocket server on top of ESP-IDF esp_http_server.
 //
 // No external dependency: esp_http_server ships with the ESP32 Arduino core.
 // Handlers run on the HTTP server task, NOT on the loop task. Use

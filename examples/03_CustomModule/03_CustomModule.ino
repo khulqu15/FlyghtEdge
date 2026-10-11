@@ -1,10 +1,10 @@
-// FlyghtNinno — 03 Custom module
+// FlyghtEdge — 03 Custom module
 //
 // Shows how to package your own feature as a reusable fn::Module:
 // it gets its own settings (NVS), REST endpoint, health entry on the System
 // page, events from other modules, and runs inside the same loop.
 
-#include <FlyghtNinno.h>
+#include <FlyghtEdge.h>
 
 // License key (API_KEY). Put it in a secrets.h next to this sketch, kept out of
 // version control:   #define FN_LICENSE_KEY "fnk_live_..."

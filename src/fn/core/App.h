@@ -1,4 +1,4 @@
-// FlyghtNinno — application container.
+// FlyghtEdge — application container.
 //
 //   fn::App app("sensor-node", "1.0.0");
 //   fn::Wifi wifi;  fn::Web web;  fn::Ui ui;
@@ -37,7 +37,7 @@ public:
   const std::vector<Module*>& modules() const { return modules_; }
 
   // --- license ---
-  // API key from the FlyghtNinno license (call before begin()). It sets the
+  // API key from the FlyghtEdge license (call before begin()). It sets the
   // edition (Free / Pro / Enterprise) and is checked offline, with ECDSA P-256.
   // Without a valid key the app runs in evaluation mode: every feature on for
   // 30 minutes per boot, then it stops until the next reset.

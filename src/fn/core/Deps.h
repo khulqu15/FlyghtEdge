@@ -1,7 +1,7 @@
-// FlyghtNinno — ESP32 core libraries used inside the library.
+// FlyghtEdge — ESP32 core libraries used inside the library.
 //
-// Included by FlyghtNinno.h so the Arduino build finds and links them also
-// when FlyghtNinno is a precompiled archive (Arduino does not scan the
+// Included by FlyghtEdge.h so the Arduino build finds and links them also
+// when FlyghtEdge is a precompiled archive (Arduino does not scan the
 // sources of precompiled libraries for their dependencies).
 #pragma once
 

@@ -1,4 +1,4 @@
-// FlyghtNinno — 02 Sensor + MQTT + HTTP
+// FlyghtEdge — 02 Sensor + MQTT + HTTP
 //
 // A small greenhouse controller: live chart, gauge, fan speed slider, mode
 // select and a pump button. Every widget is also:
@@ -7,7 +7,7 @@
 //   * in Home Assistant (discovery) when enabled in Connect > MQTT.
 // The broker can also be set from the web UI; the line below is optional.
 
-#include <FlyghtNinno.h>
+#include <FlyghtEdge.h>
 
 // License key (API_KEY). Put it in a secrets.h next to this sketch, kept out of
 // version control:   #define FN_LICENSE_KEY "fnk_live_..."
