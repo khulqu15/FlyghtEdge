@@ -1,0 +1,12 @@
+FlyghtNinno
+Copyright (c) 2026 flyght-ninno. Licensed under the FlyghtNinno Community License 1.1 (see LICENSE).
+
+Third-party components embedded in the firmware keep their own licenses:
+
+- Leaflet 1.9.4 (map page of fn::Gps)
+  BSD 2-Clause License. (c) 2010-2023 Volodymyr Agafonkin, (c) 2010-2011 CloudMade.
+- Montserrat (web UI headings font)
+  SIL Open Font License 1.1. Copyright 2011 The Montserrat Project Authors.
+- cJSON, esp_http_server, esp-mqtt, mbedTLS, lwIP, FreeRTOS
+  Part of the ESP32 Arduino core / ESP-IDF, used under their own licenses
+  (MIT, Apache 2.0, BSD); they are not redistributed by this library.

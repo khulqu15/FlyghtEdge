@@ -1,0 +1,58 @@
+FlyghtNinno Community License 1.1
+
+Copyright (c) 2026 flyght-ninno. All rights reserved.
+
+This is a source-available / binary license, not an open-source license.
+"The Library" means FlyghtNinno: its headers, precompiled archives, source
+code (where provided), web UI, documentation and examples.
+
+1. What you may do (free, with a license key)
+   a. Use the Library to develop, build and run firmware for your own or your
+      customers' devices, including commercial products.
+   b. Distribute firmware binaries that contain the Library, as part of a
+      device or product, to end users.
+   c. Copy and change the examples for your own sketches.
+
+2. What you may not do
+   a. Redistribute, sell, sublicense or publish the Library itself, in whole
+      or in part, in source or precompiled form, outside of a firmware binary
+      as allowed in 1b (for example: as a library, a fork, a package, a
+      repository mirror or a code snippet collection).
+   b. Modify the Library and distribute the modified Library.
+   c. Decompile, disassemble or reverse engineer the precompiled archives,
+      except to the extent that applicable law expressly permits it.
+   d. Use the Library, its API design, web UI or documentation to create a
+      competing library, SDK or framework.
+   e. Remove, hide or alter copyright notices, license notices or the
+      "Built with FlyghtNinno" attribution, except through the White label
+      feature where your edition allows it.
+   f. Bypass, disable, patch or tamper with the license key check, forge or
+      alter license keys, or share your license key with anyone outside your
+      organisation, other than inside firmware binaries as allowed in 1b.
+
+3. License keys and editions
+   Using the Library requires a license key (API_KEY) issued by the copyright
+   holder. Free keys are available at no cost; Pro and Enterprise keys come
+   with a separate commercial license. A key is personal to its licensee,
+   whose name it carries, and covers the releases published up to the update
+   date it states. Without a valid key the Library runs in a time-limited
+   evaluation mode, which may be used for evaluation and testing only and
+   not in a product. Keys that leak or are misused may be revoked.
+
+4. Third-party components
+   Components listed in NOTICE stay under their own licenses.
+
+5. Termination
+   This license ends automatically if you break its terms. Firmware already
+   delivered to end users before termination may continue to be used by them.
+
+6. No warranty, limitation of liability
+   THE LIBRARY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+   FROM, OUT OF OR IN CONNECTION WITH THE LIBRARY OR THE USE OR OTHER DEALINGS
+   IN THE LIBRARY.
+
+For a commercial license, contact the copyright holder through the project page.
