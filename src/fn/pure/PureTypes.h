@@ -83,6 +83,15 @@ struct Rgb {
 };
 
 // Light effects (see Light.h).
+// What a GPIO pin is used for (see Pure.h, "GPIO pins"). Public because device modules name their pin roles.
+// State of a debounced input (see debounceStep in Pure.h). Public because the sensor classes hold one.
+struct Debounce {
+  bool stable = false, last = false;
+  uint32_t since = 0;
+};
+
+enum class PinRole : uint8_t { Out, In, Adc, Pwm };
+
 enum class Fx : uint8_t { Solid, Blink, Breathe, Heartbeat, Strobe, Rainbow, Cycle, Candle, Police, Sos, Sunrise, Alarm, Count };
 
 }  // namespace pure
