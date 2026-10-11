@@ -1,6 +1,6 @@
 <div align="center">
 
-# FlyghtNinno
+# FlyghtEdge
 
 **Dashboard web di ponsel untuk semua ESP32, cukup 5 baris kode.**
 
@@ -38,7 +38,7 @@ lampu & efek · alur visual (flows) · MQTT + Home Assistant · HTTP REST API ·
 ## Mulai cepat
 
 ```cpp
-#include <FlyghtNinno.h>
+#include <FlyghtEdge.h>
 
 fn::Device dev("smart-lamp");
 
@@ -109,12 +109,12 @@ berjalan di `dev.loop()`, melaporkan kesehatan, dan menyimpan pengaturannya di N
 
 | Alat | Caranya |
 |---|---|
-| Arduino IDE | *Sketch → Include Library → Add .ZIP Library…* lalu pilih `FlyghtNinno-<versi>.zip` (atau Library Manager bila sudah terdaftar) |
-| arduino-cli | `arduino-cli lib install --zip-path FlyghtNinno-<versi>.zip` |
-| PlatformIO | `lib_deps = flyght-ninno/FlyghtNinno` (framework Arduino, espressif32 dengan core Arduino 3.x) |
+| Arduino IDE | *Sketch → Include Library → Add .ZIP Library…* lalu pilih `FlyghtEdge-<versi>.zip` (atau Library Manager bila sudah terdaftar) |
+| arduino-cli | `arduino-cli lib install --zip-path FlyghtEdge-<versi>.zip` |
+| PlatformIO | `lib_deps = flyght-ninno/FlyghtEdge` (framework Arduino, espressif32 dengan core Arduino 3.x) |
 
 Kebutuhan: **Arduino-ESP32 core 3.3.x**. Paket rilis berisi header publik dan arsip precompiled
-untuk tiap chip (`src/<chip>/libFlyghtNinno.a`).
+untuk tiap chip (`src/<chip>/libFlyghtEdge.a`).
 
 **Partition scheme (penting).** Build lengkap berukuran 1,3–1,7 MB, lebih besar dari partisi
 aplikasi bawaan 1,2 MB. Setiap contoh membawa `partitions.csv` (dua slot OTA 1,9 MB, tanpa SPIFFS),
@@ -350,7 +350,7 @@ Dokumen di folder `docs/` berbahasa Inggris; nama fungsi dan contoh kodenya sama
 
 ## Lisensi
 
-**FlyghtNinno Community License 1.1** — gratis dipakai untuk membuat dan menjual firmware, termasuk
+**FlyghtEdge Community License 1.1** — gratis dipakai untuk membuat dan menjual firmware, termasuk
 produk komersial, dengan API key lisensi; library-nya sendiri tidak boleh disebarkan ulang, dimodifikasi untuk disebarkan,
 di-reverse engineer, dipakai membuat library pesaing, atau dijalankan dengan pemeriksaan lisensi yang dilewati. Fitur Pro/Enterprise pada produk yang
 dijual memerlukan lisensi komersial. Lihat [LICENSE](LICENSE) dan [NOTICE](NOTICE).

@@ -79,7 +79,7 @@ app.begin();
 | `hostname()` / `setHostname(s)` | | mDNS / DHCP hostname |
 | `expand(tpl)` | `String` | Replaces `{name} {id} {mac4} {mac6} {version} {chip}` |
 | `restart(reason, delayMs = 800)` | | Restart after the HTTP reply was sent |
-| `factoryReset()` | | Erase all FlyghtNinno settings and restart |
+| `factoryReset()` | | Erase all FlyghtEdge settings and restart |
 | `uptimeSec()` | `uint32_t` | Seconds since boot |
 | `setYield(ms)` | | Delay at the end of each `loop()` (default 1 ms) |
 

@@ -1,6 +1,6 @@
 # Modules
 
-Every FlyghtNinno feature is an `fn::Module`. Modules are registered with `app.use(...)`, started in dependency order, and run cooperatively inside `app.loop()`.
+Every FlyghtEdge feature is an `fn::Module`. Modules are registered with `app.use(...)`, started in dependency order, and run cooperatively inside `app.loop()`.
 
 ```
 fn::App ── Bus (events) · Scheduler · post() · Guard (lock) · identity

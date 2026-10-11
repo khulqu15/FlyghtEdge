@@ -1,6 +1,6 @@
 <div align="center">
 
-# FlyghtNinno
+# FlyghtEdge
 
 **A web dashboard on your phone for any ESP32, in 5 lines of code.**
 
@@ -38,7 +38,7 @@ lights & effects · visual flows · MQTT + Home Assistant · HTTP REST API · we
 ## Quick start
 
 ```cpp
-#include <FlyghtNinno.h>
+#include <FlyghtEdge.h>
 
 fn::Device dev("smart-lamp");
 
@@ -109,12 +109,12 @@ Every feature is an `fn::Module`. Modules declare dependencies, start in depende
 
 | Tool | How |
 |---|---|
-| Arduino IDE | *Sketch → Include Library → Add .ZIP Library…* and pick `FlyghtNinno-<version>.zip` (or Library Manager when listed) |
-| arduino-cli | `arduino-cli lib install --zip-path FlyghtNinno-<version>.zip` |
-| PlatformIO | `lib_deps = flyght-ninno/FlyghtNinno` (Arduino framework, espressif32 with Arduino core 3.x) |
+| Arduino IDE | *Sketch → Include Library → Add .ZIP Library…* and pick `FlyghtEdge-<version>.zip` (or Library Manager when listed) |
+| arduino-cli | `arduino-cli lib install --zip-path FlyghtEdge-<version>.zip` |
+| PlatformIO | `lib_deps = flyght-ninno/FlyghtEdge` (Arduino framework, espressif32 with Arduino core 3.x) |
 
 Requirements: **Arduino-ESP32 core 3.3.x**. The release package contains public headers and a
-precompiled archive per chip (`src/<chip>/libFlyghtNinno.a`).
+precompiled archive per chip (`src/<chip>/libFlyghtEdge.a`).
 
 **Partition scheme (important).** A full build is 1.3–1.7 MB, more than the default 1.2 MB app
 partition. Each example has a `partitions.csv` (two 1.9 MB OTA slots, no SPIFFS) and you also raise
@@ -347,7 +347,7 @@ optional. See [docs/MODULES.md](docs/MODULES.md) and `examples/03_CustomModule`.
 
 ## License
 
-**FlyghtNinno Community License 1.1** — free to build and ship firmware with it, including
+**FlyghtEdge Community License 1.1** — free to build and ship firmware with it, including
 commercial products, with a license key; the library itself may not be redistributed, modified for redistribution,
 reverse engineered, used to build a competing library, or run with its license check bypassed.
 Pro/Enterprise features in shipped products need a commercial license. See [LICENSE](LICENSE) and [NOTICE](NOTICE).

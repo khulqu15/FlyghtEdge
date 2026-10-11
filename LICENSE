@@ -1,9 +1,9 @@
-FlyghtNinno Community License 1.1
+FlyghtEdge Community License 1.1
 
 Copyright (c) 2026 flyght-ninno. All rights reserved.
 
 This is a source-available / binary license, not an open-source license.
-"The Library" means FlyghtNinno: its headers, precompiled archives, source
+"The Library" means FlyghtEdge: its headers, precompiled archives, source
 code (where provided), web UI, documentation and examples.
 
 1. What you may do (free, with a license key)
@@ -24,7 +24,7 @@ code (where provided), web UI, documentation and examples.
    d. Use the Library, its API design, web UI or documentation to create a
       competing library, SDK or framework.
    e. Remove, hide or alter copyright notices, license notices or the
-      "Built with FlyghtNinno" attribution, except through the White label
+      "Built with FlyghtEdge" attribution, except through the White label
       feature where your edition allows it.
    f. Bypass, disable, patch or tamper with the license key check, forge or
       alter license keys, or share your license key with anyone outside your

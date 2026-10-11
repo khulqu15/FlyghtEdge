@@ -1,6 +1,6 @@
 # Architecture
 
-Block diagrams of how FlyghtNinno works inside the ESP32. The diagrams are Mermaid (GitHub and
+Block diagrams of how FlyghtEdge works inside the ESP32. The diagrams are Mermaid (GitHub and
 most Markdown viewers render them).
 
 **Contents** — [Layers](#1-layers) · [Modules and dependencies](#2-modules-and-dependencies) ·
