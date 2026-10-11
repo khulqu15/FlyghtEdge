@@ -65,7 +65,7 @@ Value formats: toggle `true/false` (also `"on"`, `"off"`, `"toggle"`), slider a 
 | Method | Path | Role |
 |---|---|---|
 | GET/PUT | `/mqtt` · POST `/mqtt/test` | admin |
-| GET/PUT | `/cloud` | admin | Flyght Cloud: enable, site, license key (never returned); state and activation link |
+| GET/PUT | `/cloud` | admin | Flyght Cloud: enable, site, license key (never returned; sending an empty `apiKey` removes it and needs `"confirm"` = the device name, else 422); state and activation link |
 | GET/PUT | `/webhook` · POST `/webhook/test` | admin |
 | GET/PUT | `/sys` (PUT `{name}`) | viewer/admin |
 | GET | `/sys/health`: every module's `{state: ok\|degraded\|failed\|disabled, msg, details}` | viewer |
