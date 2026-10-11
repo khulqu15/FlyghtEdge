@@ -57,8 +57,14 @@ void loop() { dev.loop(); }
 |:-:|---|---|
 | 1 | Upload (Partition Scheme **"No FS 4MB (2MB APP x2)"**) | The board starts its own Wi-Fi `smart-lamp-XXXX` |
 | 2 | Join that Wi-Fi from your phone | The dashboard **opens by itself** (captive portal) |
-| 3 | Create the admin password | You are signed in; the session is kept for 30 days |
-| 4 | Pick your home Wi-Fi | Open `http://smart-lamp-xxxx.local` from any device on that network |
+| 3 | Choose **I have a key** or **Set up online** | Both start with the admin password |
+| 4 | Create the admin password | You are signed in; the session is kept for 30 days |
+| 5 | *I have a key:* paste it, then pick your home Wi-Fi. *Set up online:* pick your home Wi-Fi, then open the link to create a key on the Flyght website and paste it | Flyght Cloud connects once Wi-Fi is up (skip the key to stay local) |
+| 6 | Open `http://smart-lamp-xxxx.local` from any device on that network | The dashboard |
+
+The key typed in the wizard connects the device to Flyght Cloud. The edition of the firmware still
+comes from `dev.license()` in the sketch. The wizard saves one Wi-Fi; add backups later on the
+Network page (up to 8, tried by priority).
 
 Reconnecting or rebooting does not ask you to sign in again.
 

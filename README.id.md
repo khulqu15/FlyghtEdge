@@ -57,8 +57,14 @@ void loop() { dev.loop(); }
 |:-:|---|---|
 | 1 | Upload (Partition Scheme **"No FS 4MB (2MB APP x2)"**) | Board memancarkan Wi-Fi sendiri `smart-lamp-XXXX` |
 | 2 | Sambungkan ponsel ke Wi-Fi itu | Dashboard **terbuka otomatis** (captive portal) |
-| 3 | Buat password admin | Langsung masuk; sesi tersimpan 30 hari |
-| 4 | Pilih Wi-Fi rumah | Buka `http://smart-lamp-xxxx.local` dari perangkat mana pun di jaringan itu |
+| 3 | Pilih **Saya punya key** atau **Setup online** | Keduanya diawali password admin |
+| 4 | Buat password admin | Langsung masuk; sesi tersimpan 30 hari |
+| 5 | *Saya punya key:* tempel key, lalu pilih Wi-Fi rumah. *Setup online:* pilih Wi-Fi rumah, lalu buka tautan untuk membuat key di situs Flyght dan tempel di sini | Flyght Cloud tersambung setelah Wi-Fi aktif (lewati key untuk tetap lokal) |
+| 6 | Buka `http://smart-lamp-xxxx.local` dari perangkat mana pun di jaringan itu | Dashboard |
+
+Key yang diketik di wizard menyambungkan perangkat ke Flyght Cloud. Edisi firmware tetap berasal dari
+`dev.license()` di sketch. Wizard menyimpan satu Wi-Fi; cadangan ditambah nanti di halaman Network
+(sampai 8, dicoba menurut prioritas).
 
 Tersambung ulang atau board restart? Tidak perlu login lagi.
 

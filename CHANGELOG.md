@@ -8,6 +8,7 @@
   library folder, install FlyghtEdge, and change `#include <FlyghtNinno.h>` to `#include <FlyghtEdge.h>`.
   Old sketches still compile through a deprecated `FlyghtNinno.h` that prints a note; it goes away in 3.0.
   The `User-Agent` of outgoing webhooks and flow HTTP requests is now `FlyghtEdge/<version>`.
+- **First-run wizard with two paths**, like an OS installer: **I have a key** (password, key, Wi-Fi) and **Set up online** (password, Wi-Fi, then the link that creates a key on the Flyght website). The key typed here is the Flyght Cloud key and can be skipped; the firmware edition still comes from `dev.license()`. The status of Flyght Cloud shows on the last step.
 - **Dashboard: Flyght Cloud card** (Settings, admin): status, the link that claims the device, an on/off switch, the license key (write-only) and the server address. The card hides itself on a firmware without the cloud module.
 - **Dashboard logo**: the FlyghtEdge mark replaces the "F" glyph. It is a 756-byte PNG inside the page (no SD card, no extra request); the White label feature shows the device initial instead.
 - **Flyght Cloud** (`dev.cloud()`, off by default): claims the device with the license key, then mirrors the dashboard over MQTT to the broker the server names (certificate verified, reconnect with backoff). Admins get `GET/PUT /fn/api/v1/cloud`. The only address built in is the site; a device follows a server that moved.
