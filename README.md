@@ -28,10 +28,11 @@ lights & effects · visual flows · MQTT + Home Assistant · HTTP REST API · we
 9. [Devices](#devices)
 10. [License key and editions](#license-key-and-editions)
 11. [Integrations: MQTT, HTTP, webhooks](#integrations)
-12. [Modular use and your own modules](#modular-use)
-13. [Documentation map](#documentation-map)
-14. [Troubleshooting](#troubleshooting)
-15. [License](#license)
+12. [Flyght Cloud](#flyght-cloud)
+13. [Modular use and your own modules](#modular-use)
+14. [Documentation map](#documentation-map)
+15. [Troubleshooting](#troubleshooting)
+16. [License](#license)
 
 ---
 
@@ -310,6 +311,44 @@ curl -X POST -H "Authorization: Bearer $TOKEN" http://smart-lamp-c2d3.local/fn/a
 ```
 
 **Webhook** — JSON POST on change or on an interval, signed with HMAC-SHA256 (`X-Flyght-Signature`).
+
+## Flyght Cloud
+
+Flyght Cloud lists this device next to your others on the web and lets you watch and control it
+from anywhere. It is **off by default**: the device works the same without it, and the local
+dashboard, MQTT and webhooks are not affected.
+
+```cpp
+dev.license("fnk_live_...");   // the same key registers the device
+dev.cloud().enable();          // or switch it on in Settings > Flyght Cloud
+```
+
+1. The device registers itself with its license key and is told where to connect.
+2. It connects over TLS (the server's certificate is verified) and mirrors the dashboard: widget
+   states go up, commands from the web come down. Lights are not mirrored yet.
+3. In **Settings > Flyght Cloud** (admin) you see the status and, until the device is registered,
+   the link that claims it in your Flyght account.
+
+| Status | Meaning |
+|---|---|
+| Off | Not switched on |
+| No network | Waiting for Wi-Fi |
+| Needs a license key | No key in the sketch or the dashboard, or the server does not accept it |
+| Claiming / Fetching settings / Connecting | On its way |
+| Online | Connected |
+| Retrying | Server busy or unreachable; tries again with a growing pause |
+| Stopped | The server refused this device (key revoked, device blocked, owned by another account, no free slot); the dashboard says which |
+
+**Server address.** The firmware carries one address, `https://flyght.obayan.id`. Change it in
+**Settings > Flyght Cloud** or with `dev.cloud().site("https://your.server")`; a saved address wins
+over the one in the sketch. Everything else (broker, topics) comes from the server, so a device
+follows the server when it moves, and goes back to the built-in address if the saved one stops
+answering. Only `https://` addresses are accepted.
+
+The license key is write-only: the dashboard and the API tell you whether a key is set, never what it is.
+The local MQTT module is independent, so your own broker or Home Assistant keeps working.
+
+---
 
 ## Modular use
 

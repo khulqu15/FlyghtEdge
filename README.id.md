@@ -28,10 +28,11 @@ lampu & efek · alur visual (flows) · MQTT + Home Assistant · HTTP REST API ·
 9. [Perangkat tambahan](#perangkat-tambahan)
 10. [API key lisensi dan edisi](#api-key-lisensi-dan-edisi)
 11. [Integrasi: MQTT, HTTP, webhook](#integrasi)
-12. [Pemakaian modular](#pemakaian-modular)
-13. [Peta dokumentasi](#peta-dokumentasi)
-14. [Kendala umum](#kendala-umum)
-15. [Lisensi](#lisensi)
+12. [Flyght Cloud](#flyght-cloud)
+13. [Pemakaian modular](#pemakaian-modular)
+14. [Peta dokumentasi](#peta-dokumentasi)
+15. [Kendala umum](#kendala-umum)
+16. [Lisensi](#lisensi)
 
 ---
 
@@ -311,6 +312,44 @@ curl -X POST -H "Authorization: Bearer $TOKEN" http://smart-lamp-c2d3.local/fn/a
 ```
 
 **Webhook** — POST JSON saat ada perubahan atau berkala, ditandatangani HMAC-SHA256 (`X-Flyght-Signature`).
+
+## Flyght Cloud
+
+Flyght Cloud menampilkan perangkat ini bersama perangkat Anda yang lain di web dan memungkinkan
+Anda memantau serta mengendalikannya dari mana saja. **Mati secara bawaan**: perangkat berfungsi
+sama tanpa cloud, dan dashboard lokal, MQTT, dan webhook tidak terpengaruh.
+
+```cpp
+dev.license("fnk_live_...");   // key yang sama mendaftarkan perangkat
+dev.cloud().enable();          // atau nyalakan di Pengaturan > Flyght Cloud
+```
+
+1. Perangkat mendaftar sendiri dengan license key-nya dan diberi tahu ke mana harus terhubung.
+2. Perangkat terhubung lewat TLS (sertifikat server diverifikasi) dan mencerminkan dashboard: status
+   widget naik, perintah dari web turun. Lampu belum dicerminkan.
+3. Di **Pengaturan > Flyght Cloud** (admin) Anda melihat status dan, sampai perangkat terdaftar,
+   tautan untuk mendaftarkannya di akun Flyght Anda.
+
+| Status | Arti |
+|---|---|
+| Off | Belum dinyalakan |
+| No network | Menunggu Wi-Fi |
+| Needs a license key | Tidak ada key di sketch maupun dashboard, atau server tidak menerimanya |
+| Claiming / Fetching settings / Connecting | Sedang berjalan |
+| Online | Terhubung |
+| Retrying | Server sibuk atau tidak terjangkau; mencoba lagi dengan jeda yang bertambah |
+| Stopped | Server menolak perangkat ini (key dicabut, perangkat diblokir, milik akun lain, slot penuh); dashboard menyebut alasannya |
+
+**Alamat server.** Firmware membawa satu alamat, `https://flyght.obayan.id`. Ubah di
+**Pengaturan > Flyght Cloud** atau dengan `dev.cloud().site("https://server.anda")`; alamat yang
+tersimpan didahulukan dari yang ada di sketch. Semua lainnya (broker, topik) datang dari server,
+sehingga perangkat mengikuti server yang pindah, dan kembali ke alamat bawaan bila alamat tersimpan
+tidak menjawab. Hanya alamat `https://` yang diterima.
+
+License key bersifat tulis-saja: dashboard dan API hanya memberi tahu apakah key sudah diisi, tidak pernah isinya.
+Modul MQTT lokal tidak bergantung pada cloud, jadi broker Anda sendiri atau Home Assistant tetap berjalan.
+
+---
 
 ## Pemakaian modular
 
