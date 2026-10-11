@@ -11,7 +11,7 @@ web UI, the stored value wins.
 **Contents** —
 [Device](#device) · [App](#app) · [Module](#module) · [Events, scheduler, health](#events-scheduler-health) ·
 [Page & widgets](#page--widgets) · [Ui](#ui) · [Auth](#auth) · [Wifi](#wifi) · [Ap](#ap) · [Captive](#captive) ·
-[Mdns](#mdns) · [Web](#web) · [Mqtt](#mqtt) · [Webhook](#webhook) · [System](#system) ·
+[Mdns](#mdns) · [Web](#web) · [Mqtt](#mqtt) · [Cloud](#cloud) · [Webhook](#webhook) · [System](#system) ·
 [Features & editions](#features--editions) · [Light / Led / RgbLed](#light--led--rgbled) · [Flows](#flows) ·
 [Flow blocks API](#flow-blocks-api) · [Devices](#devices) · [Json](#json) · [Kv (NVS)](#kv-nvs) · [Logging](#logging)
 
@@ -262,6 +262,20 @@ dev.web().get("/fn/api/v1/hello", fn::Role::Viewer, [](fn::Request& q, fn::Respo
 | `connected()` / `base()` | State |
 | `publish(topic, payload, retain = false, qos = 0)` | `bool` |
 | `subscribe(topic, void(topic, payload) cb)` | Callback on the loop task |
+
+## Cloud
+
+| Member | Description |
+|---|---|
+| `enable(on = true)` | Code default for the first boot; the dashboard setting wins afterwards. Off by default |
+| `site(url)` | `https://host[:port][/path]`; a saved address wins over this one |
+| `apiKey(key)` | Key used to register; default is the one given to `license()` |
+| `state()` | `Off`, `NoNetwork`, `NeedKey`, `Claiming`, `Fetching`, `Connecting`, `Online`, `Retry`, `Stopped` |
+| `connected()` | `true` while online |
+| `site()` | The address in use now |
+| `activateUrl()` | Link that claims the device in the web account |
+
+HTTP: `GET/PUT /fn/api/v1/cloud` (admin), see [API.md](API.md). The key is never returned.
 
 ## Webhook
 
