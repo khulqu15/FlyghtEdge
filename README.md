@@ -26,13 +26,14 @@ lights & effects · visual flows · MQTT + Home Assistant · HTTP REST API · we
 7. [Lights](#lights)
 8. [Visual flows](#visual-flows)
 9. [Devices](#devices)
-10. [License key and editions](#license-key-and-editions)
-11. [Integrations: MQTT, HTTP, webhooks](#integrations)
-12. [Flyght Cloud](#flyght-cloud)
-13. [Modular use and your own modules](#modular-use)
-14. [Documentation map](#documentation-map)
-15. [Troubleshooting](#troubleshooting)
-16. [License](#license)
+10. [Relays, sensors and motors](#relays-sensors-and-motors)
+11. [License key and editions](#license-key-and-editions)
+12. [Integrations: MQTT, HTTP, webhooks](#integrations)
+13. [Flyght Cloud](#flyght-cloud)
+14. [Modular use and your own modules](#modular-use)
+15. [Documentation map](#documentation-map)
+16. [Troubleshooting](#troubleshooting)
+17. [License](#license)
 
 ---
 
@@ -143,6 +144,9 @@ the limit:
 | `04_ModularApp` | `fn::App` with only the modules you pick | any ESP32 |
 | `05_Devices` | IMU, LCD, SD, TFT, GPS, MCU link with per-chip pins | the devices you have |
 | `06_BuiltinLed` | Lights, colour picker, effects, visual flows, BOOT button | **just the board** |
+| `07_Relays` | Multi-channel relay board (active-high / low, latching), interlock, max on-time, pins movable from the card menu | a relay board |
+| `08_Sensors` | DHT, DS18B20, ultrasonic tank level, analog, leak switch, CO2 | the sensors you have |
+| `09_Motors` | DC motor, brushless ESC, stepper, solenoid valve | the drivers you have |
 
 ## Dashboard widgets
 
@@ -254,6 +258,63 @@ flowchart LR
 Nothing of a device is linked unless you create it and call `dev.use(...)`. Pins:
 `imu.pins(sda, scl)`, `sd.pins(sck, miso, mosi)`, `panel.pins(sck, mosi, miso)`; `examples/05_Devices`
 has defaults for every chip.
+
+## Relays, sensors and motors
+
+For the usual IoT parts there are ready modules. Each one is a card (or several) on the dashboard, is
+linked into the firmware only when you create it, and works over MQTT, Home Assistant, flows and
+Flyght Cloud like any other widget. See `examples/07_Relays`, `08_Sensors`, `09_Motors`.
+
+| Part | Module | Notes |
+|---|---|---|
+| Relay board, 1-16 channels | `fn::Relay` | active-high, active-low, latching (set + reset pin); boot state, pulse, maximum on-time, interlock group |
+| Solenoid valve | `fn::Solenoid` | a relay that closes by itself and rests between openings |
+| DHT11 / DHT22 | `fn::Dht` | temperature + humidity, one pin |
+| DS18B20 | `fn::Ds18b20` | one sensor on a 1-Wire pin, 4.7 k pull-up |
+| Ultrasonic (HC-SR04, JSN-SR04T) | `fn::Ultrasonic` | distance, optional tank level in %, air-temperature correction |
+| Water level, O2, H2, MQ gas, ACS712 | `fn::AnalogSensor` | any analog output: linear scale, Hall current, MQ curve. ADC1 pins only |
+| Float switch, water leak, flame | `fn::DigitalSensor` | debounced, active-low, your own labels |
+| CO2 | `fn::Mhz19` | MH-Z19 over UART |
+| Mains power meter | `fn::Pzem` | PZEM-004T v3 over UART: V, A, W, kWh, Hz, power factor |
+| DC voltage / current / power | `fn::Ina219` | I2C |
+| Brushed DC motor | `fn::DcMotor` | H-bridge (L298N, TB6612, L9110 ...): speed -100..100 %, a reversal goes through zero, ramp, maximum run time |
+| Brushless motor | `fn::Esc` | through an ESC: arms first, then throttle 0..100 % |
+| Stepper | `fn::Stepper` | step/dir drivers (A4988, DRV8825, TB6600): move to a position with acceleration |
+
+```cpp
+fn::Relay relays("relay", "Pump room");
+fn::Dht dht(4);
+
+void setup() {
+  relays.channel(5, "Pump").maxOn(600);          // off by itself after 10 minutes
+  relays.channel(6, "Valve", fn::Relay::Type::ActiveLow);
+  dht.every(5000).alarm(35, 32);                 // an "alarm" card: on at 35 C, off at 32 C
+  dev.use(relays).use(dht);
+  dev.begin();
+}
+```
+
+**Move a pin without recompiling.** On every card that belongs to one of these modules an admin sees a
+three-dots menu with **Settings**. The dialog lists the pins of the device, named by what they do
+(GPIO output, analog ADC1, UART RX, I2C SDA, step ...), and offers only pins that can work: no flash or
+USB pins, no input-only pin for an output, ADC1 pins for analog inputs, pins used by another device
+shown as taken, boot pins with a warning. A device that switches a load (relay, motor, stepper)
+asks for the device name before it saves; GPIO pins apply at once (the output is switched off before
+the pin moves), UART and I2C pins are used from the next start. A saved pin wins over the one in
+the sketch.
+
+**Good to know**
+* A reading that cannot be trusted shows "—", never a plausible number. A sensor with no valid reading
+  for five intervals goes to *degraded* in the module health.
+* Calibration is yours. A gas sensor shows what its curve says; check it against a reference.
+* Wiring: HC-SR04 echo is 5 V (use a divider), a relay board needs its own supply and a flyback diode on
+  every coil, the analog pins are 0-3.1 V, ADC2 pins are not offered because they stop working with Wi-Fi.
+* A DHT read takes about 5 ms with interrupts off, once per interval. The stepper runs up to a few thousand
+  steps a second. Neither blocks the dashboard.
+* **Not a safety function.** Interlocks, maximum on-times and the Stop cards are conveniences; an
+  emergency stop belongs in hardware.
+
+---
 
 ## License key and editions
 

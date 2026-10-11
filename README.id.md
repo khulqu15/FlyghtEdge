@@ -26,13 +26,14 @@ lampu & efek · alur visual (flows) · MQTT + Home Assistant · HTTP REST API ·
 7. [Lampu (LED)](#lampu-led)
 8. [Alur visual (Flows)](#alur-visual-flows)
 9. [Perangkat tambahan](#perangkat-tambahan)
-10. [API key lisensi dan edisi](#api-key-lisensi-dan-edisi)
-11. [Integrasi: MQTT, HTTP, webhook](#integrasi)
-12. [Flyght Cloud](#flyght-cloud)
-13. [Pemakaian modular](#pemakaian-modular)
-14. [Peta dokumentasi](#peta-dokumentasi)
-15. [Kendala umum](#kendala-umum)
-16. [Lisensi](#lisensi)
+10. [Relay, sensor, dan motor](#relay-sensor-dan-motor)
+11. [API key lisensi dan edisi](#api-key-lisensi-dan-edisi)
+12. [Integrasi: MQTT, HTTP, webhook](#integrasi)
+13. [Flyght Cloud](#flyght-cloud)
+14. [Pemakaian modular](#pemakaian-modular)
+15. [Peta dokumentasi](#peta-dokumentasi)
+16. [Kendala umum](#kendala-umum)
+17. [Lisensi](#lisensi)
 
 ---
 
@@ -143,6 +144,9 @@ dan batas upload juga perlu dinaikkan:
 | `04_ModularApp` | `fn::App` hanya dengan modul yang dipilih | ESP32 apa saja |
 | `05_Devices` | IMU, LCD, SD, TFT, GPS, MCU dengan pin per chip | perangkat yang Anda punya |
 | `06_BuiltinLed` | Lampu, color picker, efek, alur visual, tombol BOOT | **cukup board-nya** |
+| `07_Relays` | Board relay multi-kanal (active-high / low, latching), interlock, waktu nyala maksimum, pin bisa dipindah dari menu kartu | board relay |
+| `08_Sensors` | DHT, DS18B20, level tangki ultrasonik, analog, saklar kebocoran, CO2 | sensor yang Anda punya |
+| `09_Motors` | Motor DC, ESC brushless, stepper, katup solenoid | driver yang Anda punya |
 
 ## Widget dashboard
 
@@ -254,6 +258,62 @@ flowchart LR
 Perangkat hanya ikut ke firmware bila Anda membuat objeknya dan memanggil `dev.use(...)`. Pin:
 `imu.pins(sda, scl)`, `sd.pins(sck, miso, mosi)`, `panel.pins(sck, mosi, miso)`; `examples/05_Devices`
 berisi pin bawaan untuk tiap chip.
+
+## Relay, sensor, dan motor
+
+Untuk komponen IoT yang umum sudah ada modulnya. Masing-masing menjadi kartu di dashboard, hanya ikut ke
+firmware bila Anda membuat objeknya, dan bekerja lewat MQTT, Home Assistant, flows, dan Flyght Cloud
+seperti widget lain. Lihat `examples/07_Relays`, `08_Sensors`, `09_Motors`.
+
+| Komponen | Modul | Catatan |
+|---|---|---|
+| Board relay, 1-16 kanal | `fn::Relay` | active-high, active-low, latching (pin set + reset); kondisi awal, pulse, waktu nyala maksimum, grup interlock |
+| Katup solenoid | `fn::Solenoid` | relay yang menutup sendiri dan beristirahat di antara pembukaan |
+| DHT11 / DHT22 | `fn::Dht` | suhu + kelembapan, satu pin |
+| DS18B20 | `fn::Ds18b20` | satu sensor di pin 1-Wire, pull-up 4,7 k |
+| Ultrasonik (HC-SR04, JSN-SR04T) | `fn::Ultrasonic` | jarak, level tangki dalam % (opsional), koreksi suhu udara |
+| Level air, O2, H2, gas MQ, ACS712 | `fn::AnalogSensor` | output analog apa pun: skala linear, arus Hall, kurva MQ. Hanya pin ADC1 |
+| Float switch, kebocoran air, api | `fn::DigitalSensor` | di-debounce, active-low, label sendiri |
+| CO2 | `fn::Mhz19` | MH-Z19 lewat UART |
+| Meter listrik AC | `fn::Pzem` | PZEM-004T v3 lewat UART: V, A, W, kWh, Hz, faktor daya |
+| Tegangan / arus / daya DC | `fn::Ina219` | I2C |
+| Motor DC brushed | `fn::DcMotor` | H-bridge (L298N, TB6612, L9110 ...): kecepatan -100..100 %, pembalikan arah lewat nol, ramp, waktu jalan maksimum |
+| Motor brushless | `fn::Esc` | lewat ESC: arming dulu, lalu throttle 0..100 % |
+| Stepper | `fn::Stepper` | driver step/dir (A4988, DRV8825, TB6600): pindah ke posisi dengan akselerasi |
+
+```cpp
+fn::Relay relays("relay", "Ruang pompa");
+fn::Dht dht(4);
+
+void setup() {
+  relays.channel(5, "Pompa").maxOn(600);         // mati sendiri setelah 10 menit
+  relays.channel(6, "Katup", fn::Relay::Type::ActiveLow);
+  dht.every(5000).alarm(35, 32);                 // kartu "alarm": menyala di 35 C, mati di 32 C
+  dev.use(relays).use(dht);
+  dev.begin();
+}
+```
+
+**Pindahkan pin tanpa compile ulang.** Di setiap kartu milik modul ini, admin melihat menu tiga titik
+dengan **Settings**. Dialognya menampilkan pin perangkat, dinamai menurut fungsinya (output GPIO, analog
+ADC1, UART RX, I2C SDA, step ...), dan hanya menawarkan pin yang bisa bekerja: bukan pin flash atau USB,
+bukan pin input-only untuk output, pin ADC1 untuk input analog, pin yang dipakai perangkat lain tampil
+sebagai terpakai, pin boot diberi peringatan. Perangkat yang menggerakkan beban (relay, motor, stepper)
+meminta nama perangkat sebelum menyimpan; pin GPIO berlaku seketika (output dimatikan dulu sebelum pin
+pindah), pin UART dan I2C dipakai sejak start berikutnya. Pin tersimpan didahulukan dari pin di sketch.
+
+**Perlu diketahui**
+* Pembacaan yang tidak bisa dipercaya tampil "—", tidak pernah angka yang tampak masuk akal. Sensor tanpa
+  pembacaan valid selama lima interval menjadi *degraded* di kesehatan modul.
+* Kalibrasi tanggung jawab Anda. Sensor gas menampilkan apa kata kurvanya; cocokkan dengan acuan.
+* Pengawatan: echo HC-SR04 bertegangan 5 V (pakai pembagi), board relay butuh catu sendiri dan dioda
+  flyback di tiap kumparan, pin analog 0-3,1 V, pin ADC2 tidak ditawarkan karena mati saat Wi-Fi aktif.
+* Pembacaan DHT memakan sekitar 5 ms dengan interupsi mati, sekali tiap interval. Stepper berjalan sampai
+  beberapa ribu langkah per detik. Keduanya tidak memblokir dashboard.
+* **Bukan fungsi keselamatan.** Interlock, waktu nyala maksimum, dan kartu Stop hanyalah kemudahan;
+  emergency stop harus ada di perangkat keras.
+
+---
 
 ## API key lisensi dan edisi
 

@@ -12,7 +12,7 @@ web UI, the stored value wins.
 [Device](#device) · [App](#app) · [Module](#module) · [Events, scheduler, health](#events-scheduler-health) ·
 [Page & widgets](#page--widgets) · [Ui](#ui) · [Auth](#auth) · [Wifi](#wifi) · [Ap](#ap) · [Captive](#captive) ·
 [Mdns](#mdns) · [Web](#web) · [Mqtt](#mqtt) · [Cloud](#cloud) · [Webhook](#webhook) · [System](#system) ·
-[Features & editions](#features--editions) · [Light / Led / RgbLed](#light--led--rgbled) · [Flows](#flows) ·
+[Features & editions](#features--editions) · [Light / Led / RgbLed](#light--led--rgbled) · [Relays, sensors, motors](#relays-sensors-motors) · [Flows](#flows) ·
 [Flow blocks API](#flow-blocks-api) · [Devices](#devices) · [Json](#json) · [Kv (NVS)](#kv-nvs) · [Logging](#logging)
 
 ---
@@ -341,6 +341,47 @@ fn::RgbLed strip(5, 6, 7, "desk", /*commonAnode*/ false);
 | `Light::all()` | list | Every light |
 
 `fn::Fx`: `Solid Blink Breathe Heartbeat Strobe Rainbow Cycle Candle Police Sos Sunrise Alarm`.
+
+## Relays, sensors, motors
+
+All of them are modules (`dev.use(x)`), linked only when created. `id` and `title` must outlive the object;
+`id` is at most 15 characters (it is the key of the saved pins).
+
+**Relay** — `fn::Relay relays("relay", "Title");`
+
+| Member | Description |
+|---|---|
+| `channel(pin, name, type)` | Add a channel (1-16). `Type::ActiveHigh` (default), `ActiveLow`; pin -1 = not wired yet |
+| `latching(setPin, resetPin, name)` | Bistable relay: a 50 ms pulse on the set or reset pin |
+| `bootOn(on)` · `maxOn(seconds)` · `pulse(ms)` · `interlock(group)` · `minOff(seconds)` | Settings of the channel added last |
+| `page(name)` | Dashboard page (default "Relays") |
+| `set(channel, on)` | `false` when refused: no pin, interlock busy, still resting |
+| `isOn(channel)` · `channels()` | State |
+
+`fn::Solenoid valve(pin, id, name, maxOnSeconds = 60, minOffSeconds = 2)` is a one-channel relay with those two limits.
+
+**Sensors** (`#include <FlyghtEdge.h>`) — common to all: `every(ms)`, `staleAfter(ms)`, `page(name)`, `alarm(high, low, cb)`, `value(i)`.
+
+| Class | Constructor | Notes |
+|---|---|---|
+| `Dht` | `Dht(pin, Type::Dht22, id)` | `temperature()`, `humidity()`; at least 2 s (DHT11 1 s) between reads |
+| `Ds18b20` | `Ds18b20(pin, id)` | one sensor; `temperature()` |
+| `Ultrasonic` | `Ultrasonic(trig, echo, id)` | `airTemperature(c)`, `tank(emptyCm, fullCm)`, `distanceCm()` |
+| `AnalogSensor` | `AnalogSensor(adc1Pin, id, title, unit)` | `map(mvLo, mvHi, outLo, outHi)`, `range(lo, hi, dec)`, `hall(zeroMv, mvPerAmp)`, `mq(Vc, RL, R0, a, b)`, `millivolts()` |
+| `DigitalSensor` | `DigitalSensor(pin, id, title)` | `activeLow()`, `pullUp()`, `labels(active, idle)`, `debounce(ms)`, `onChange(cb)`, `active()` |
+| `Mhz19` | `Mhz19(rx, tx, port = Serial2, id)` | `ppm()` |
+| `Pzem` | `Pzem(rx, tx, port = Serial2, address = 0xF8, id)` | `volts()`, `amps()`, `watts()` (and energy, frequency, power factor cards) |
+| `Ina219` | `Ina219(address = 0x40, shuntOhm = 0.1, wire = Wire, sda = -1, scl = -1, id)` | `volts()`, `amps()`, `watts()` |
+
+**Motors**
+
+| Class | Constructor | Members |
+|---|---|---|
+| `DcMotor` | `DcMotor(pwm, in1, in2 = -1, id, title)` | `ramp(percentPerSec)`, `maxRun(seconds)`, `pwmFrequency(hz)`, `speed(percent)`, `stop()` |
+| `Esc` | `Esc(pin, id, title)` | `pulse(minUs, maxUs)`, `ramp(percentPerSec)`, `armTime(ms)`, `maxRun(seconds)`, `throttle(percent)`, `stop()`, `armed()` |
+| `Stepper` | `Stepper(step, dir, enable = -1, id, title)` | `maxSpeed(sps)`, `acceleration(sps2)`, `limits(min, max)`, `enableActiveHigh()`, `releaseAfter(ms)`, `reverse()`, `moveTo(pos)`, `moveBy(n)`, `stop()`, `position()`, `setPosition(p)`, `moving()` |
+
+**Pins of your own device.** Implement `fn::PinDevice` (`pinDeviceId`, `pinDeviceTitle`, `pinSlots`, `pinApply`; optional `pinsDriveLoad`, `pinsNeedRestart`), call `fn::pins::add(app, this)` in `begin()`, read saved pins with `fn::pins::saved(id, key, default)`, and put `.device(id)` on its widgets: the card menu then offers Settings.
 
 ## Flows
 

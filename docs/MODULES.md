@@ -22,7 +22,13 @@ fn::App ── Bus (events) · Scheduler · post() · Guard (lock) · identity
    ├── sd       SD card over SPI / SDMMC                deps: ?web
    ├── tft      ST7789 / ILI9341 / any GFX over SPI     deps: ?web
    ├── gps      NMEA receiver over UART                 deps: ?web
-   └── mcu      line protocol to another MCU over UART  deps: ?web, ?ui
+   ├── mcu      line protocol to another MCU over UART  deps: ?web, ?ui
+   │
+   │   IoT parts (each a module, its pins movable from the card menu, see Pins.h)
+   ├── relay    1-16 relay channels, interlock, max on-time   deps: ui
+   ├── <sensor> dht, ds18b20, ultrasonic, analog, digital,    deps: ui
+   │            mhz19, pzem, ina219 (one module each)
+   └── <motor>  motor (H-bridge), esc, stepper                deps: ui
 ```
 
 ### UI plugins
