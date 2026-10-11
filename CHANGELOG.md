@@ -1,0 +1,59 @@
+# Changelog
+
+## 2.1.0 - unreleased
+
+- **Flyght Cloud** (`dev.cloud()`, off by default): claims the device with the license key, then mirrors the dashboard over MQTT to the broker the server names (certificate verified, reconnect with backoff). Admins get `GET/PUT /fn/api/v1/cloud`. The only address built in is the site; a device follows a server that moved.
+- A widget id that Flyght Cloud would not accept (1-32 of `A-Z a-z 0-9 _ -`) is logged at startup.
+- `Source::Cloud` for commands that arrive from the cloud.
+- Visual flows: **Aperture** trigger block. Aperture (AI vision: people counting, PPE detection) posts a
+  number to `POST /fn/api/v1/flows/aperture`; the flow starts on every change (or every update) for
+  one feed and camera, with the number as `{value}`. Wire it to relays, buzzers, lights or widgets.
+
+## 2.0.0 — 2026-10-09
+
+License keys. **Breaking:** `dev.edition(...)` is gone; the edition comes from the key.
+
+- License key (API_KEY) `fnk_live_…`: owner, edition, license id and update window, signed with
+  ECDSA P-256 / SHA-256 and verified offline at boot with mbedTLS (hardware ECC on C5/C6). A
+  CRC-32 checksum catches typos. Add it with `dev.license(FN_LICENSE_KEY)`; the examples read it
+  from an optional `secrets.h`.
+- Evaluation mode without a valid key: every feature on, a banner in the dashboard, and after
+  30 minutes the app stops (HTTP 402) until the next reset. The boot log says why a key was rejected.
+- *Settings → Plan & features* shows who the device is licensed to and the update window.
+- HTTP API tokens: `fn_` + 256 random bits in base62 + checksum; tokens made by 1.x still work.
+- License text 1.1: a license key is required; bypassing the check or sharing a key is not allowed.
+
+Migrating from 1.x: remove `dev.edition(...)`, add `dev.license(...)` with your key.
+
+## 1.0.0 — 2026-10-04
+
+First release.
+
+- Core: `fn::App`, module contract, dependency ordering, event bus, scheduler, `post()` to the loop task, NVS store, cJSON wrapper, ring-buffer logs.
+- Network: station Wi-Fi (8 saved networks, priority order with automatic failover, save-as-backup, password edit, backoff, AP-aware deferral, async scan, C5 2.4 GHz policy), SoftAP (always/fallback/off, watchdog, DHCP option 114), captive portal (DNS + OS probes, per-client "online" after sign-in), mDNS (`_flyght._tcp`, refresh).
+- Web: esp_http_server wrapper, wildcard routes, CORS, gzip+ETag UI, WebSocket broadcast.
+- Auth: setup wizard, PBKDF2 admin password, guest access (viewer/operator), HMAC sessions that survive reboot, rate limiting, API tokens, sign-out-everywhere.
+- UI: 8 widget types, pages, drag-and-drop layout stored on device, light/dark, English + Bahasa Indonesia.
+- Integrations: MQTT (state/set, LWT, retained, Home Assistant discovery), HTTP REST, signed webhooks.
+- System: info, module health, logs, OTA upload, restart, factory reset, NTP/browser clock.
+- Devices (opt-in modules with their own UI pages): BNO055 IMU and HD44780 LCD (I2C), SD card file manager and ST7789/ILI9341/GFX TFT with drawing tools (SPI/SDMMC), GPS map with Leaflet and external-MCU serial link (UART).
+- UI plugin system: per-module pages served gzip'd from flash, WebSocket topic subscriptions.
+- UI: soft "dribbble" redesign, friendly sign-in page with kaomoji and rotating quotes, kid-friendly controls, Montserrat headings embedded in flash (offline-safe) paired with the system UI font.
+- Lights: `fn::Led` (digitalWrite or PWM) and `fn::RgbLed` (RGB_BUILTIN / WS2812 pixel or 3 PWM pins), colour picker, brightness, 12 non-blocking effects, state kept in NVS, HTTP + MQTT + WebSocket.
+- Visual flows (Pro): node editor in the browser (palette, canvas, bezier wires, inspector, pan/zoom, live highlight, templates), triggers/logic/actions + device blocks, serial or parallel branches, optional FreeRTOS thread per flow (Enterprise), stored in NVS.
+- Editions and feature switches (Free / Pro / Enterprise): guest access, Visual flows, Users & roles, white label and RTOS flows start off; *Settings → Plan & features*.
+- Users & roles (Pro): up to 8 accounts with viewer / operator / admin rights, username on the sign-in page.
+- Example `06_BuiltinLed`: tests lights, effects and flows with only the board's LED and BOOT button.
+- Fix (found on real hardware): the web server now brings up the TCP/IP stack itself (`Network.begin()`), so starting before the Wi-Fi/AP modules no longer crashes at boot. Verified on an ESP32-S3 (4 MB flash, 2 MB PSRAM, USB-Serial/JTAG).
+- HTTP handler limit raised to 128 (all devices + lights + flows need ~100).
+- Flows fixes (found on hardware): the Light block decides on/off from the state before the block, so "colour + toggle" on a timer blinks instead of staying dark, and a colour means a steady colour; **Run** works for every flow (Run button triggers, otherwise each trigger once); timers below 50 ms are refused.
+- Pin safety: modules claim their GPIOs (`fn::claimPin`); flows cannot use pins of an LED, a bus, the SPI flash or USB (checked when saving and when running).
+- Light state is written to NVS only when it really changed (fewer slow flash writes).
+- RGB colour order for addressable LEDs (`colorOrder(fn::ColorOrder::RGB)`, `order` in the lights API, selector on the Lights page): fixes red/green swapped on boards with RGB-order LEDs.
+- Phone UI: the layout-editor bar wraps (text above the buttons); the flow editor zooms out to show the whole flow on narrow screens.
+- Fix: *Log out* now always lands on the sign-in page (a late hashchange used to redraw the dashboard without a session).
+- `extras/test/demo.mjs`: records a walkthrough video (`--mobile`: 1080×1920 phone version with touch indicator) of the whole UI (sign in → dashboard → every device page → lights → flows → settings → log out) with ffmpeg.
+- Precompiled release package: public headers and one archive per chip, with the examples and the documentation; the core version the archives need is checked at compile time. Log output is bound from the sketch so the archives work with every USB/UART setting, and a copyright notice is shown by the firmware, `GET /sys` and every UI script.
+- License: FlyghtNinno Community License 1.0 (free to build and ship firmware; no redistribution, modification for redistribution, reverse engineering or competing libraries). NOTICE lists third-party components.
+- Docs: new README (English) and README.id.md (Bahasa Indonesia), docs/REFERENCE.md (every class and function), docs/ARCHITECTURE.md (block diagrams), release guide in docs/MODULES.md.
+- Tooling: UI build, device simulator (incl. all devices, lights and the flow engine), host unit tests, browser E2E tests.
