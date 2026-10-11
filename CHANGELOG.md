@@ -2,6 +2,12 @@
 
 ## 2.1.0 - unreleased
 
+- **Renamed: FlyghtNinno is now FlyghtEdge.** The library name, the header and the precompiled archive
+  (`libFlyghtEdge.a`) change; the `fn::` namespace, `FN_*` macros, settings stored on the device, MQTT
+  topics, the license key format and existing keys do not. To migrate: remove the old `FlyghtNinno`
+  library folder, install FlyghtEdge, and change `#include <FlyghtNinno.h>` to `#include <FlyghtEdge.h>`.
+  Old sketches still compile through a deprecated `FlyghtNinno.h` that prints a note; it goes away in 3.0.
+  The `User-Agent` of outgoing webhooks and flow HTTP requests is now `FlyghtEdge/<version>`.
 - **Flyght Cloud** (`dev.cloud()`, off by default): claims the device with the license key, then mirrors the dashboard over MQTT to the broker the server names (certificate verified, reconnect with backoff). Admins get `GET/PUT /fn/api/v1/cloud`. The only address built in is the site; a device follows a server that moved.
 - A widget id that Flyght Cloud would not accept (1-32 of `A-Z a-z 0-9 _ -`) is logged at startup.
 - `Source::Cloud` for commands that arrive from the cloud.
