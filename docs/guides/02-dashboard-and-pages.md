@@ -63,6 +63,9 @@ device and is the same for everyone who opens that page.
 
 ![Edit layout mode](../images/screens/edit-layout-desktop.webp)
 
+The menu is the same on every screen size. On a phone it is hidden until you press the menu button in the top
+bar, then it slides in with the rooms, the device pages (Lights, Flows, Files and so on), Wi-Fi, Connect and Settings.
+
 The dashboard follows the phone's light or dark setting, and has an English and an Indonesian
 interface that you can switch at any time.
 

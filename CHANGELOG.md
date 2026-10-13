@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.2.0 — 2026-10-13
+
+- **One menu on every screen size.** On a phone the side menu is a drawer you open with the menu button (rooms, device pages, Wi-Fi, Connect, Settings). The bottom tab bar and the page tabs on the dashboard are gone.
+- **Settings is grouped**: Device & health, Cloud & license, Accounts & security, Maintenance & factory reset, with a row that jumps to a group and groups that fold. *Users & roles* is always there for the admin, with a switch to turn it on (or a note when the edition does not include it).
+- **Setup on the evaluation banner**: next to *Enter license key*, it erases the settings after you type RESET and starts the setup wizard again.
+- **Calibrate colours** on the Lights page: the LED shows its colours one at a time, you pick the one you see, and the colour order is saved after a final "is this red?" check.
+
 ## 2.1.1 — 2026-10-13
 
 - **Enter the license key from the dashboard.** In evaluation mode the banner has an *Enter license key* button, and a device whose evaluation ran out shows the same button, so it no longer needs `dev.license()` and an upload to get its key. The key is checked by the device, saved on it and applied after a restart (`PUT /fn/api/v1/license`, admin). A key set in the sketch with `dev.license()` takes precedence.

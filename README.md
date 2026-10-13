@@ -253,6 +253,9 @@ Effects are pure functions of `millis()`, so they never block `loop()`, and the 
 **Lights** page show exactly what the LED does. Each light is also on HTTP
 (`/fn/api/v1/lights/<id>`), MQTT (`<base>/light/<id>/set`) and in flows. The state survives reboots.
 
+Colours look wrong (red shows as green)? Open **Lights → Calibrate colours**: the LED shows its colours one at a
+time, you pick the one you see, and the right colour order is saved. It takes three steps.
+
 ## Visual flows
 
 ```cpp
@@ -497,7 +500,7 @@ optional. See [docs/MODULES.md](docs/MODULES.md) and `examples/03_CustomModule`.
 | Phone does not open the page by itself                | Open`http://192.168.4.1` manually; some phones need mobile data off         |
 | `name.local` does not resolve                       | Use the IP shown on the Wi-Fi page (Android before 12 has no mDNS)            |
 | A flow cannot be saved: "GPIO N is used by …"        | That pin belongs to an LED, a bus, the flash or USB; pick another pin         |
-| Red and green swapped on an RGB LED                   | `led.colorOrder(fn::ColorOrder::RGB)` or Lights page → Colour order → RGB |
+| Red and green swapped on an RGB LED                   | Lights page → **Calibrate colours** (pick what you see, three steps), or `led.colorOrder(fn::ColorOrder::RGB)` |
 | `#error ... built for the ESP32 Arduino core 3.3.x` | Install that core version in Boards Manager                                   |
 
 ## License

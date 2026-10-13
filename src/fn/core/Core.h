@@ -11,7 +11,7 @@
 
 namespace fn {
 
-#define FN_VERSION "2.1.1"
+#define FN_VERSION "2.2.0"
 #define FN_API_VERSION 1
 
 // Copyright / license notice compiled into every firmware (boot log, GET /sys).

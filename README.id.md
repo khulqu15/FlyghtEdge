@@ -499,7 +499,7 @@ Dokumen di folder `docs/` berbahasa Inggris; nama fungsi dan contoh kodenya sama
 | Halaman tidak terbuka sendiri di ponsel | Buka `http://192.168.4.1` manual; beberapa ponsel perlu data seluler dimatikan |
 | `nama.local` tidak bisa dibuka | Pakai IP yang tampil di halaman Wi-Fi (Android < 12 belum mendukung mDNS) |
 | Alur tidak bisa disimpan: "GPIO N is used by …" | Pin itu dipakai LED, bus, flash atau USB; pilih pin lain |
-| Merah dan hijau tertukar pada LED RGB | `led.colorOrder(fn::ColorOrder::RGB)` atau halaman Lights → Colour order → RGB |
+| Merah dan hijau tertukar pada LED RGB | Halaman Lights → **Calibrate colours** (pilih warna yang terlihat, tiga langkah), atau `led.colorOrder(fn::ColorOrder::RGB)` |
 | `#error ... built for the ESP32 Arduino core 3.3.x` | Pasang versi core tersebut di Boards Manager |
 
 ## Lisensi
