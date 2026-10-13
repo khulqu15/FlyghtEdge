@@ -42,7 +42,12 @@ public:
   // Without a valid key the app runs in evaluation mode: every feature on for
   // 30 minutes per boot, then it stops until the next reset.
   //   dev.license(FN_LICENSE_KEY);   // #define FN_LICENSE_KEY "fnk_live_..." in secrets.h
-  App& license(const char* key) { licenseKey_ = key ? key : ""; return *this; }
+  App& license(const char* key) { licenseKey_ = key ? key : ""; licenseKey_.trim(); return *this; }
+  // A key typed in the dashboard is kept in NVS and used when the sketch gives none; it applies at the next start.
+  bool sketchKey() const { return licenseKey_.length() > 0; }
+  bool keepKey(const String& key);
+  String keptKey() const;
+  bool dropKey();
   // Removed in 2.0: the edition comes from the license key, see license().
   App& edition(Edition e) = delete;
 
@@ -91,7 +96,8 @@ private:
   Scheduler sched_;
   QueueHandle_t postQ_ = nullptr;
   String licenseKey_;
-  uint32_t restartAt_ = 0;
+  // Written by the HTTP task too (a saved key restarts the device while it is stopped, when post() jobs are dropped).
+  volatile uint32_t restartAt_ = 0;
   uint8_t yieldMs_ = 1;
   bool begun_ = false;
   bool stopLogged_ = false;

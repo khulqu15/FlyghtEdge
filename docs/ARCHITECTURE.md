@@ -241,7 +241,7 @@ previews run the same `fxColor` maths in JavaScript, so they match the LED exact
 
 | Namespace | Owner | Contents |
 |---|---|---|
-| `fn.sys` | App | display name, hostname |
+| `fn.sys` | App | display name, hostname, the license key typed in the dashboard (write-only) |
 | `fn.auth` | Auth | password hash + salt, session secret, epoch, guest role, session days, API tokens, accounts |
 | `fn.feat` | Features | switches changed in Settings |
 | `fn.wifi` | Wifi | up to 8 networks with priority |

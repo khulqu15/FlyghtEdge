@@ -1,6 +1,13 @@
 # Changelog
 
-## 2.1.0 - unreleased
+## 2.1.1 — 2026-10-13
+
+- **Enter the license key from the dashboard.** In evaluation mode the banner has an *Enter license key* button, and a device whose evaluation ran out shows the same button, so it no longer needs `dev.license()` and an upload to get its key. The key is checked by the device, saved on it and applied after a restart (`PUT /fn/api/v1/license`, admin). A key set in the sketch with `dev.license()` takes precedence.
+- The key typed in the setup wizard (*I have a key*) is the license key and the Flyght Cloud key; the dashboard offers the restart that applies it.
+- Removing the saved key (Settings > Flyght Cloud, or `PUT /license` with an empty key) asks for the device name and is for the owner only.
+- While the evaluation is over, sign-in and the key route still answer; every other route keeps answering 402.
+
+## 2.1.0 — 2026-10-13
 
 - **Renamed: FlyghtNinno is now FlyghtEdge.** The library name, the header and the precompiled archive
   (`libFlyghtEdge.a`) change; the `fn::` namespace, `FN_*` macros, settings stored on the device, MQTT

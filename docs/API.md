@@ -3,7 +3,8 @@
 Base URL: `http://<device>/fn/api/v1`. Every response is JSON and errors look like `{"error": "..."}`.
 
 Without a valid license key the device runs in evaluation mode; once its 30 minutes are used up,
-every route except `GET /auth/state` answers **402** until the next reset.
+every route answers **402** until the next reset, except `GET /auth/state`, `POST /auth/login` and
+`PUT /license`: an admin can sign in and give the device its key, and it restarts to apply it.
 
 ## Authentication
 
@@ -25,6 +26,7 @@ Roles: `viewer` (1) < `operator` (2) < `admin` (3). Session tokens are HMAC-SHA2
 | POST | `/auth/logout-all` | admin | Revokes every session |
 | PUT | `/auth/password` | admin | `{current, next}` (owner only) |
 | GET/PUT | `/auth/config` | admin | `{anonymous, anonRole, sessionDays}` |
+| PUT | `/license` | admin | `{key, restart?}`: the license key typed in the dashboard. The key is checked, saved on the device and used from the next start; the device restarts after 1.5 s unless `restart` is `false`. 422 when it is not a valid key, 409 when the sketch sets the key with `dev.license()`. `{key:"", confirm:"<device name>"}` removes the saved key (owner only). The key is never returned: `GET /auth/state` shows `license.restart: true` while a saved key waits for the restart and `license.sketch: true` when the sketch gives the key |
 | GET/POST | `/auth/tokens` | admin | POST `{name, role}` returns `{token}`, shown once: `fn_` + 43 base62 characters (256 random bits) + a 6-character checksum. Tokens made by 1.x keep working |
 | DELETE | `/auth/tokens/<prefix>` | admin | |
 | GET/POST | `/auth/users` | admin | Users & roles (Pro, `rbac` on). POST `{name, password, role}`; 403 on Free, 409 while switched off |
