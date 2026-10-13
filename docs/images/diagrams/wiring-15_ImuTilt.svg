@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 412" width="780" height="412" role="img" aria-label="IMU tilt alarm: wiring">
+<title>IMU tilt alarm: wiring</title>
+<rect width="780" height="412" rx="12" fill="#f8fafc"/>
+<text x="24" y="34" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="17" fill="#0f172a" font-weight="600">IMU tilt alarm: wiring</text>
+<text x="24" y="52" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" fill="#64748b">Signal names are the constants at the top of the example; the GPIO numbers are in the table below.</text>
+<rect x="24" y="64" width="210" height="184" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+<text x="129" y="86" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">ESP32 board</text>
+<circle cx="234" cy="108" r="4" fill="#2563eb"/>
+<text x="220" y="112" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a" text-anchor="end">I2C_SDA</text>
+<circle cx="234" cy="138" r="4" fill="#0891b2"/>
+<text x="220" y="142" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a" text-anchor="end">I2C_SCL</text>
+<circle cx="234" cy="178" r="4" fill="#dc2626"/>
+<text x="220" y="182" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#64748b" text-anchor="end">3V3</text>
+<circle cx="234" cy="234" r="4" fill="#334155"/>
+<text x="220" y="238" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#64748b" text-anchor="end">GND</text>
+<rect x="470" y="64" width="286" height="148" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+<text x="484" y="86" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a" font-weight="600">BNO055 breakout</text>
+<circle cx="470" cy="111" r="4" fill="#2563eb"/>
+<text x="484" y="115" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a">SDA</text>
+<path d="M238,108 C344,108 360,111 466,111" fill="none" stroke="#2563eb" stroke-width="2"/>
+<circle cx="470" cy="137" r="4" fill="#0891b2"/>
+<text x="484" y="141" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a">SCL</text>
+<path d="M238,138 C344,138 360,137 466,137" fill="none" stroke="#0891b2" stroke-width="2"/>
+<circle cx="470" cy="163" r="4" fill="#dc2626"/>
+<text x="484" y="167" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a">VIN</text>
+<path d="M238,178 C344,178 360,163 466,163" fill="none" stroke="#dc2626" stroke-width="2"/>
+<circle cx="470" cy="189" r="4" fill="#334155"/>
+<text x="484" y="193" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a">GND</text>
+<path d="M238,234 C344,234 360,189 466,189" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="24" y="296" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="#0f172a" font-weight="600">GPIO numbers</text>
+<rect x="24" y="306" width="732" height="24" rx="6" fill="#e2e8f0"/>
+<text x="34" y="322" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a" font-weight="600">Signal</text>
+<text x="240" y="322" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a" font-weight="600">ESP32</text>
+<text x="370" y="322" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a" font-weight="600">ESP32-S3</text>
+<text x="500" y="322" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a" font-weight="600">C3 / C6 / S2</text>
+<line x1="24" y1="350" x2="756" y2="350" stroke="#cbd5e1"/>
+<text x="34" y="344" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">I2C_SDA</text>
+<text x="240" y="344" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">GPIO 21</text>
+<text x="370" y="344" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">GPIO 8</text>
+<text x="500" y="344" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">GPIO 8</text>
+<line x1="24" y1="374" x2="756" y2="374" stroke="#cbd5e1"/>
+<text x="34" y="368" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">I2C_SCL</text>
+<text x="240" y="368" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">GPIO 22</text>
+<text x="370" y="368" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">GPIO 9</text>
+<text x="500" y="368" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">GPIO 9</text>
+<text x="24" y="400" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11" fill="#64748b">Pins are chosen away from flash, USB and boot pins. Power rails: 3V3 and 5V are the board’s own; always share GND.</text>
+</svg>

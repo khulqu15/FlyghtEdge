@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 538" width="780" height="538" role="img" aria-label="Greenhouse: wiring">
+<title>Greenhouse: wiring</title>
+<rect width="780" height="538" rx="12" fill="#f8fafc"/>
+<text x="24" y="34" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="17" fill="#0f172a" font-weight="600">Greenhouse: wiring</text>
+<text x="24" y="52" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" fill="#64748b">Signal names are the constants at the top of the example; the GPIO numbers are in the table below.</text>
+<rect x="24" y="64" width="210" height="286" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+<text x="129" y="86" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="#0f172a" font-weight="600" text-anchor="middle">ESP32 board</text>
+<circle cx="234" cy="108" r="4" fill="#2563eb"/>
+<text x="220" y="112" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a" text-anchor="end">DHT_PIN</text>
+<circle cx="234" cy="138" r="4" fill="#0891b2"/>
+<text x="220" y="142" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a" text-anchor="end">FAN_PIN</text>
+<circle cx="234" cy="168" r="4" fill="#7c3aed"/>
+<text x="220" y="172" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a" text-anchor="end">PUMP_PIN</text>
+<circle cx="234" cy="208" r="4" fill="#dc2626"/>
+<text x="220" y="212" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#64748b" text-anchor="end">3V3</text>
+<circle cx="234" cy="236" r="4" fill="#dc2626"/>
+<text x="220" y="240" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#64748b" text-anchor="end">5V</text>
+<circle cx="234" cy="264" r="4" fill="#334155"/>
+<text x="220" y="268" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#64748b" text-anchor="end">GND</text>
+<rect x="470" y="64" width="286" height="122" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+<text x="484" y="86" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a" font-weight="600">DHT22</text>
+<circle cx="470" cy="111" r="4" fill="#2563eb"/>
+<text x="484" y="115" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a">DATA</text>
+<path d="M238,108 C344,108 360,111 466,111" fill="none" stroke="#2563eb" stroke-width="2"/>
+<circle cx="470" cy="137" r="4" fill="#dc2626"/>
+<text x="484" y="141" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a">VCC</text>
+<path d="M238,208 C344,208 360,137 466,137" fill="none" stroke="#dc2626" stroke-width="2"/>
+<circle cx="470" cy="163" r="4" fill="#334155"/>
+<text x="484" y="167" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a">GND</text>
+<path d="M238,264 C344,264 360,163 466,163" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="5 4"/>
+<rect x="470" y="202" width="286" height="148" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+<text x="484" y="224" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a" font-weight="600">Relay board (fan, pump)</text>
+<circle cx="470" cy="249" r="4" fill="#0891b2"/>
+<text x="484" y="253" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a">IN1 (fan)</text>
+<path d="M238,138 C344,138 360,249 466,249" fill="none" stroke="#0891b2" stroke-width="2"/>
+<circle cx="470" cy="275" r="4" fill="#7c3aed"/>
+<text x="484" y="279" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a">IN2 (pump)</text>
+<path d="M238,168 C344,168 360,275 466,275" fill="none" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="470" cy="301" r="4" fill="#dc2626"/>
+<text x="484" y="305" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a">VCC</text>
+<path d="M238,236 C344,236 360,301 466,301" fill="none" stroke="#dc2626" stroke-width="2"/>
+<circle cx="470" cy="327" r="4" fill="#334155"/>
+<text x="484" y="331" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#0f172a">GND</text>
+<path d="M238,264 C344,264 360,327 466,327" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="24" y="398" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="#0f172a" font-weight="600">GPIO numbers</text>
+<rect x="24" y="408" width="732" height="24" rx="6" fill="#e2e8f0"/>
+<text x="34" y="424" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a" font-weight="600">Signal</text>
+<text x="240" y="424" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a" font-weight="600">ESP32</text>
+<text x="370" y="424" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a" font-weight="600">ESP32-S3</text>
+<text x="500" y="424" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a" font-weight="600">C3 / C6 / S2</text>
+<line x1="24" y1="452" x2="756" y2="452" stroke="#cbd5e1"/>
+<text x="34" y="446" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">DHT_PIN</text>
+<text x="240" y="446" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">GPIO 4</text>
+<text x="370" y="446" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">GPIO 4</text>
+<text x="500" y="446" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">GPIO 4</text>
+<line x1="24" y1="476" x2="756" y2="476" stroke="#cbd5e1"/>
+<text x="34" y="470" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">FAN_PIN</text>
+<text x="240" y="470" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">GPIO 25</text>
+<text x="370" y="470" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">GPIO 5</text>
+<text x="500" y="470" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">GPIO 5</text>
+<line x1="24" y1="500" x2="756" y2="500" stroke="#cbd5e1"/>
+<text x="34" y="494" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">PUMP_PIN</text>
+<text x="240" y="494" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">GPIO 26</text>
+<text x="370" y="494" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">GPIO 6</text>
+<text x="500" y="494" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="#0f172a">GPIO 6</text>
+<text x="24" y="526" font-family="-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11" fill="#64748b">Pins are chosen away from flash, USB and boot pins. Power rails: 3V3 and 5V are the board’s own; always share GND.</text>
+</svg>
