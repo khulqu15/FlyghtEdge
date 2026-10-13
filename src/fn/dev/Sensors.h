@@ -25,6 +25,14 @@
 
 #include "Sensor.h"
 
+// The second spare UART: Serial2 where the chip has three UARTs (ESP32, S3), Serial1 where it has two
+// (C3, C6, S2), so the default argument below exists on every chip.
+#if SOC_UART_HP_NUM > 2
+#define FN_SPARE_UART Serial2
+#else
+#define FN_SPARE_UART Serial1
+#endif
+
 namespace fn {
 
 class Dht : public Sensor {
@@ -139,7 +147,7 @@ private:
 
 class Mhz19 : public Sensor {
 public:
-  Mhz19(int rxPin, int txPin, HardwareSerial& port = Serial2, const char* id = "co2");
+  Mhz19(int rxPin, int txPin, HardwareSerial& port = FN_SPARE_UART, const char* id = "co2");
   int ppm() const { return std::isnan(value(0)) ? -1 : (int)value(0); }
 
 protected:
@@ -157,7 +165,7 @@ private:
 
 class Pzem : public Sensor {
 public:
-  Pzem(int rxPin, int txPin, HardwareSerial& port = Serial2, uint8_t address = 0xF8, const char* id = "mains");
+  Pzem(int rxPin, int txPin, HardwareSerial& port = FN_SPARE_UART, uint8_t address = 0xF8, const char* id = "mains");
   float volts() const { return value(0); }
   float amps() const { return value(1); }
   float watts() const { return value(2); }

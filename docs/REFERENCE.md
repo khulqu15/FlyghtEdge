@@ -369,8 +369,8 @@ All of them are modules (`dev.use(x)`), linked only when created. `id` and `titl
 | `Ultrasonic` | `Ultrasonic(trig, echo, id)` | `airTemperature(c)`, `tank(emptyCm, fullCm)`, `distanceCm()` |
 | `AnalogSensor` | `AnalogSensor(adc1Pin, id, title, unit)` | `map(mvLo, mvHi, outLo, outHi)`, `range(lo, hi, dec)`, `hall(zeroMv, mvPerAmp)`, `mq(Vc, RL, R0, a, b)`, `millivolts()` |
 | `DigitalSensor` | `DigitalSensor(pin, id, title)` | `activeLow()`, `pullUp()`, `labels(active, idle)`, `debounce(ms)`, `onChange(cb)`, `active()` |
-| `Mhz19` | `Mhz19(rx, tx, port = Serial2, id)` | `ppm()` |
-| `Pzem` | `Pzem(rx, tx, port = Serial2, address = 0xF8, id)` | `volts()`, `amps()`, `watts()` (and energy, frequency, power factor cards) |
+| `Mhz19` | `Mhz19(rx, tx, port = FN_SPARE_UART, id)` | `ppm()` |
+| `Pzem` | `Pzem(rx, tx, port = FN_SPARE_UART, address = 0xF8, id)` | `volts()`, `amps()`, `watts()` (and energy, frequency, power factor cards) |
 | `Ina219` | `Ina219(address = 0x40, shuntOhm = 0.1, wire = Wire, sda = -1, scl = -1, id)` | `volts()`, `amps()`, `watts()` |
 
 **Motors**
