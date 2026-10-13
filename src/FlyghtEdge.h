@@ -23,6 +23,10 @@
 #error "FlyghtEdge needs the ESP32 Arduino core 3.x (Tools > Board > Boards Manager > esp32)"
 #endif
 
+#if ESP_ARDUINO_VERSION_MAJOR != 3 || ESP_ARDUINO_VERSION_MINOR != 3
+#error "This FlyghtEdge release is built for the ESP32 Arduino core 3.3.x"
+#endif
+
 #include "fn/core/Deps.h"  // core libraries the (precompiled) library links against
 #include "fn/Device.h"
 
