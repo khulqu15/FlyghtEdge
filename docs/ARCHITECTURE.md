@@ -296,3 +296,9 @@ ESP32 core major.minor it was built for, which is checked when your sketch compi
 | Flow interval trigger | ≥ 50 ms |
 | Text widget | 128 characters |
 | Log ring buffer | last lines kept in RAM (System page) |
+
+<!-- flyght-cloud-footer:start -->
+---
+
+**Flyght Cloud.** See this device next to your others, from anywhere: [flyght.obayan.id](https://flyght.obayan.id). Sign in, claim the device with its link, and the dashboard you built here is also on the web.
+<!-- flyght-cloud-footer:end -->

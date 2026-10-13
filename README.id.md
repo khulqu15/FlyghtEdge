@@ -11,6 +11,10 @@ lampu & efek · alur visual (flows) · MQTT + Home Assistant · HTTP REST API ·
 
 [English](README.md) · **Bahasa Indonesia**
 
+<!-- flyght-cloud-header:start -->
+> **Dashboard Flyght Cloud:** [flyght.obayan.id](https://flyght.obayan.id) adalah dashboard web resmi untuk perangkat ini: satu tempat untuk semua board Anda, dari mana saja. Opsional dan mati secara bawaan.
+<!-- flyght-cloud-header:end -->
+
 </div>
 
 ---
@@ -68,6 +72,35 @@ Key yang diketik di wizard menyambungkan perangkat ke Flyght Cloud. Edisi firmwa
 (sampai 8, dicoba menurut prioritas).
 
 Tersambung ulang atau board restart? Tidak perlu login lagi.
+
+## Tampilan
+
+<p align="center">
+  <img src="docs/images/screens/dashboard-control-desktop.webp" alt="Dashboard di browser desktop" width="470">
+  <img src="docs/images/screens/dashboard-dark-desktop.webp" alt="Dashboard yang sama dengan tema gelap" width="470">
+</p>
+
+<p align="center"><sub>Screenshot berasal dari simulator yang ikut proyek; ia menyajikan dashboard yang sama dengan firmware. [Semua layar, desktop dan ponsel](docs/guides/15-screen-catalog.md).</sub></p>
+
+## Panduan
+
+Panduan langkah demi langkah dengan diagram pengawatan, kode yang bisa di-compile, dan screenshot ada di
+[docs/guides](docs/guides/README.md) (berbahasa Inggris):
+[mulai](docs/guides/01-getting-started.md) ·
+[dashboard](docs/guides/02-dashboard-and-pages.md) ·
+[Wi-Fi](docs/guides/03-wifi-and-provisioning.md) ·
+[GPS](docs/guides/04-gps.md) ·
+[TFT](docs/guides/05-tft.md) ·
+[kartu SD](docs/guides/06-sd-card.md) ·
+[LCD dan IMU](docs/guides/07-lcd-and-imu.md) ·
+[MCU link](docs/guides/08-mcu-link.md) ·
+[MQTT dan Home Assistant](docs/guides/09-mqtt-and-home-assistant.md) ·
+[webhook dan flows](docs/guides/10-webhooks-and-flows.md) ·
+[relay, sensor, dan motor](docs/guides/11-relays-sensors-motors.md) ·
+[Flyght Cloud](docs/guides/12-flyght-cloud.md) ·
+[pengawatan dan pinout](docs/guides/13-wiring-and-pinout.md) ·
+[pemecahan masalah](docs/guides/14-troubleshooting.md) ·
+[katalog layar](docs/guides/15-screen-catalog.md)
 
 ## Fitur
 
@@ -147,6 +180,21 @@ dan batas upload juga perlu dinaikkan:
 | `07_Relays` | Board relay multi-kanal (active-high / low, latching), interlock, waktu nyala maksimum, pin bisa dipindah dari menu kartu | board relay |
 | `08_Sensors` | DHT, DS18B20, level tangki ultrasonik, analog, saklar kebocoran, CO2 | sensor yang Anda punya |
 | `09_Motors` | Motor DC, ESC brushless, stepper, katup solenoid | driver yang Anda punya |
+| `10_GpsTracker` | Peta GPS, jejak, kecepatan, satelit | modul GPS |
+| `11_GpsGeofence` | Sirene saat perangkat keluar dari lingkaran | GPS + relay |
+| `12_TftStatus` | Nilai di layar warna, dicerminkan langsung | ST7789 / ILI9341 |
+| `13_SdLogger` | Logger CSV dan file manager | modul kartu SD |
+| `14_LcdStatus` | Layar 16x2 dengan sakelar lampu latar | LCD I2C |
+| `15_ImuTilt` | Pitch, roll, dan alarm miring | BNO055 |
+| `16_McuBridge` | Nilai dari dan perintah ke board lain | MCU apa pun lewat UART |
+| `17_DashboardTour` | Semua tipe widget, halaman, ukuran, role | **cukup board-nya** |
+| `18_HomeAssistant` | MQTT dengan discovery Home Assistant | broker |
+| `19_WebhookAlerts` | Webhook bertanda tangan dari sakelar pintu | sakelar |
+| `20_FlowsRules` | Aturan yang digambar di browser | relay + tombol |
+| `21_CloudClaim` | Mendaftarkan perangkat ke Flyght Cloud | Wi-Fi + key |
+| `22_Greenhouse` | DHT22, kipas, dan pompa dengan alarm | DHT22 + relay |
+| `23_TankPump` | Kontrol level air dengan proteksi pompa kering | ultrasonik + float switch + relay |
+| `24_PowerMonitor` | V/A/W/kWh listrik dengan pemutus arus lebih | PZEM-004T + relay |
 
 ## Widget dashboard
 
@@ -433,6 +481,7 @@ bersifat opsional. Lihat [docs/MODULES.md](docs/MODULES.md) dan `examples/03_Cus
 
 | Dokumen | Untuk |
 |---|---|
+| [docs/guides](docs/guides/README.md) | Panduan langkah demi langkah dengan diagram pengawatan, peta GPIO, dan screenshot (bahasa Inggris) |
 | [docs/REFERENCE.md](docs/REFERENCE.md) | Semua kelas dan fungsi yang dipanggil dari sketch, lengkap dengan tabel |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Diagram blok: modul, boot, request, sesi, alur, thread |
 | [docs/API.md](docs/API.md) | Endpoint HTTP, topik WebSocket, isi webhook |
@@ -464,3 +513,21 @@ Aset pihak ketiga: Montserrat (SIL OFL 1.1), Leaflet 1.9.4 (BSD-2-Clause, hanya 
 Peta © kontributor OpenStreetMap.
 
 © 2026 flyght-ninno
+
+<!-- flyght-cloud-footer:start -->
+---
+
+**Flyght Cloud.** Lihat perangkat ini bersama perangkat lain dari mana saja: [flyght.obayan.id](https://flyght.obayan.id). Masuk, daftarkan perangkat lewat tautannya, dan dashboard yang Anda buat di sini juga tersedia di web.
+<!-- flyght-cloud-footer:end -->
+
+---
+
+<!-- flyght-contact:start -->
+## Hubungi kami
+
+Pertanyaan, bug, ide, atau proyek Anda sendiri? Hubungi kami di **[ninno.obayan.id](https://ninno.obayan.id)**:
+
+- **Berkontribusi**: kode, contoh, dokumentasi, terjemahan, dan laporan perangkat keras sangat diterima.
+- **Penggunaan komersial**: lisensi, dukungan, dan pekerjaan khusus untuk produk dan armada.
+- **Donasi**: jika FlyghtEdge menghemat waktu Anda, Anda bisa membantu proyek ini terus berjalan.
+<!-- flyght-contact:end -->

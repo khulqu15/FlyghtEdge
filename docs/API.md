@@ -143,3 +143,9 @@ Every flow route except `GET /flows` answers 403 on Free and 409 while the switc
 
 A wire is `[fromBlock, outputIndex, toBlock]`. WebSocket topic `flows`: `{ev: ["<flowId>:<blockId>", ...]}`
 as runs pass through blocks (used for the live highlight).
+
+<!-- flyght-cloud-footer:start -->
+---
+
+**Flyght Cloud.** See this device next to your others, from anywhere: [flyght.obayan.id](https://flyght.obayan.id). Sign in, claim the device with its link, and the dashboard you built here is also on the web.
+<!-- flyght-cloud-footer:end -->

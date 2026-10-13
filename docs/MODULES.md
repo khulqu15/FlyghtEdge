@@ -130,3 +130,9 @@ if (app.features().on("myReports")) { ... }
 
 Switches appear in *Settings → Plan & features*, with a lock and the edition they need when the
 current edition is too low.
+
+<!-- flyght-cloud-footer:start -->
+---
+
+**Flyght Cloud.** See this device next to your others, from anywhere: [flyght.obayan.id](https://flyght.obayan.id). Sign in, claim the device with its link, and the dashboard you built here is also on the web.
+<!-- flyght-cloud-footer:end -->
