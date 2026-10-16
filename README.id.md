@@ -454,11 +454,12 @@ dev.cloud().enable();          // atau nyalakan di Pengaturan > Flyght Cloud
 | Retrying | Server sibuk atau tidak terjangkau; mencoba lagi dengan jeda yang bertambah |
 | Stopped | Server menolak perangkat ini (key dicabut, perangkat diblokir, milik akun lain, slot penuh); dashboard menyebut alasannya |
 
-**Alamat server.** Firmware membawa satu alamat, `https://flyght.obayan.id`. Ubah di
-**Pengaturan > Flyght Cloud** atau dengan `dev.cloud().site("https://server.anda")`; alamat yang
-tersimpan didahulukan dari yang ada di sketch. Semua lainnya (broker, topik) datang dari server,
-sehingga perangkat mengikuti server yang pindah, dan kembali ke alamat bawaan bila alamat tersimpan
-tidak menjawab. Hanya alamat `https://` yang diterima.
+**Alamat server.** Firmware membawa satu alamat, `https://flyght.obayan.id`. Alamat ini bukan
+pengaturan di perangkat: dashboard hanya menampilkannya, dan API lokal menolak `site` yang dikirim ke
+`PUT /fn/api/v1/cloud` (403). Build sendiri diarahkan ke tempat lain dengan
+`dev.cloud().site("https://server.anda")` atau `-DFN_CLOUD_SITE=...`. Semua lainnya (broker, topik)
+datang dari server, sehingga perangkat mengikuti server yang pindah, dan kembali ke alamat bawaan
+bila alamat yang disebut server tidak menjawab. Hanya alamat `https://` yang diterima.
 
 License key bersifat tulis-saja: dashboard dan API hanya memberi tahu apakah key sudah diisi, tidak pernah isinya.
 Modul MQTT lokal tidak bergantung pada cloud, jadi broker Anda sendiri atau Home Assistant tetap berjalan.

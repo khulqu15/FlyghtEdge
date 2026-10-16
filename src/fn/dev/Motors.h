@@ -101,6 +101,59 @@ private:
   String wThr_, wStop_;
 };
 
+// Hobby servo on a 50 Hz PWM signal. Positional by default (an angle on a dial) or continuous (360,
+// a speed). Presets for MG90S, MG995, MG996R and SG90; "universal" plus the calibration dialog cover
+// the rest. Calibration (the pulse window, and the stop pulse for a continuous servo) is saved per
+// servo in NVS and wins over the sketch. The pin can be moved from the card menu.
+class Servo : public Module, public PinDevice {
+public:
+  Servo(int pin, const char* id = "servo", const char* title = "Servo");
+  Servo& continuous(bool on = true) { cont_ = on; return *this; }                 // 360 continuous-rotation servo
+  Servo& range(float degrees) { range_ = degrees; return *this; }                 // travel of a positional servo, default 180
+  Servo& pulse(uint16_t minUs, uint16_t maxUs) { minUs_ = minUs; maxUs_ = maxUs; return *this; }  // default 500 - 2500 us
+  Servo& center(uint16_t stopUs) { stopUs_ = stopUs; return *this; }              // continuous: the pulse that holds it still
+  Servo& preset(const char* name);                                               // "mg90s", "mg995", "mg996r", "sg90", "universal"
+  Servo& speed(float degPerSecond) { slew_ = degPerSecond; return *this; }        // positional slew, default 0 = as fast as it can
+  Servo& page(const char* name) { pageName_ = name; return *this; }
+
+  void angle(float degrees);     // positional: 0..range
+  void move(float speedPct);     // continuous: -100..100
+  void hold();                   // continuous: the stop pulse
+  float angle() const { return cont_ ? 0 : target_; }
+
+  const char* id() const override { return id_; }
+  const char* title() const override { return title_; }
+  const char* deps() const override { return "ui"; }
+  bool begin(App& app) override;
+  void loop(uint32_t now) override;
+  Health health() const override;
+
+  const char* pinDeviceId() const override { return id_; }
+  const char* pinDeviceTitle() const override { return title_; }
+  bool pinsDriveLoad() const override { return true; }
+  void pinSlots(std::vector<PinSlot>& out) const override;
+  void pinApply(const std::vector<int>& pins) override;
+
+private:
+  friend class ServoApi;                    // the shared web routes (control + calibration) in Servo.cpp
+  bool attach();
+  void writeUs(uint32_t us);
+  void writeTarget();
+  void loadCal();
+  bool saveCal(uint32_t minUs, uint32_t maxUs, uint32_t stopUs);
+  void stateJson(JsonRef o) const;
+  const char* id_;
+  const char* title_;
+  String pageName_ = "Servos";
+  Ui* ui_ = nullptr;
+  int pin_, def_;
+  bool ok_ = false, cont_ = false;
+  float range_ = 180, slew_ = 0;
+  uint16_t minUs_ = 500, maxUs_ = 2500, stopUs_ = 1500;
+  float target_ = 0, cur_ = 0;              // positional: degrees; continuous: cur_ is the speed %
+  uint32_t last_ = 0;
+};
+
 class Stepper : public Module, public PinDevice {
 public:
   Stepper(int stepPin, int dirPin, int enablePin = -1, const char* id = "stepper", const char* title = "Stepper");

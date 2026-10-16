@@ -15,6 +15,7 @@
 
 #include "../core/App.h"
 #include "../pure/PureTypes.h"
+#include "../core/Json.h"
 
 namespace fn {
 
@@ -48,6 +49,9 @@ namespace pins {
 void add(App& app, PinDevice* device);
 // The saved pin for (device, key), or `def` when nothing is saved. A saved -1 means "none".
 int saved(const char* deviceId, const char* key, int def);
+// The hardware inventory (chip + every device with its pins, roles and protocols), as GET /devices returns it.
+// Used by the dashboard and, after the owner claims the device, mirrored to Flyght Cloud.
+void describe(JsonRef out);
 }  // namespace pins
 
 }  // namespace fn

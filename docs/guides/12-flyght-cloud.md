@@ -63,9 +63,11 @@ still comes from `dev.license()` in the sketch.
 
 ## Server address and privacy
 
-The firmware carries one address, `https://flyght.obayan.id`. You can change it in **Settings → Flyght
-Cloud** (or `dev.cloud().site("https://your.server")`); a saved address wins. Everything else, the
-broker included, comes from the server, so a device follows the server if it moves.
+The firmware carries one address, `https://flyght.obayan.id`. It is not a setting on the device: the
+dashboard shows it but does not change it, and the local API refuses a `site` sent to
+`PUT /fn/api/v1/cloud` (403). A build of your own points somewhere else with
+`dev.cloud().site("https://your.server")` or `-DFN_CLOUD_SITE=...`. Everything else, the broker
+included, comes from the server, so a device follows the server if it moves.
 
 The device sends its widget states and who it is: device id, name, model, firmware and library version,
 and where it can be reached on your network (its local IP and `.local` address). The license key is used

@@ -275,7 +275,8 @@ dev.web().get("/fn/api/v1/hello", fn::Role::Viewer, [](fn::Request& q, fn::Respo
 | `site()` | The address in use now |
 | `activateUrl()` | Link that claims the device in the web account |
 
-HTTP: `GET/PUT /fn/api/v1/cloud` (admin), see [API.md](API.md). The key is never returned.
+HTTP: `GET/PUT /fn/api/v1/cloud` (admin), see [API.md](API.md). The key is never returned, and the
+server address is read-only there (`site` in a PUT is refused with 403).
 
 ## Webhook
 

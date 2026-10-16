@@ -457,11 +457,12 @@ dev.cloud().enable();          // or switch it on in Settings > Flyght Cloud
 | Retrying                                  | Server busy or unreachable; tries again with a growing pause                                                                   |
 | Stopped                                   | The server refused this device (key revoked, device blocked, owned by another account, no free slot); the dashboard says which |
 
-**Server address.** The firmware carries one address, `https://flyght.obayan.id`. Change it in
-**Settings > Flyght Cloud** or with `dev.cloud().site("https://your.server")`; a saved address wins
-over the one in the sketch. Everything else (broker, topics) comes from the server, so a device
-follows the server when it moves, and goes back to the built-in address if the saved one stops
-answering. Only `https://` addresses are accepted.
+**Server address.** The firmware carries one address, `https://flyght.obayan.id`. It is not a
+setting on the device: the dashboard shows it, and the local API refuses a `site` sent to
+`PUT /fn/api/v1/cloud` (403). A build of your own points somewhere else with
+`dev.cloud().site("https://your.server")` or `-DFN_CLOUD_SITE=...`. Everything else (broker, topics)
+comes from the server, so a device follows the server when it moves, and goes back to the built-in
+address if the one the server named stops answering. Only `https://` addresses are accepted.
 
 The license key is write-only: the dashboard and the API tell you whether a key is set, never what it is.
 The local MQTT module is independent, so your own broker or Home Assistant keeps working.

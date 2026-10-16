@@ -67,7 +67,7 @@ Value formats: toggle `true/false` (also `"on"`, `"off"`, `"toggle"`), slider a 
 | Method | Path | Role |
 |---|---|---|
 | GET/PUT | `/mqtt` · POST `/mqtt/test` | admin |
-| GET/PUT | `/cloud` | admin | Flyght Cloud: enable, site, license key (never returned; sending an empty `apiKey` removes it and needs `"confirm"` = the device name, else 422); state and activation link |
+| GET/PUT | `/cloud` | admin | Flyght Cloud: enable and license key (never returned; sending an empty `apiKey` removes it and needs `"confirm"` = the device name, else 422); state, server address (read-only) and activation link. A body that carries `site` is refused with 403 and changes nothing: the address comes from the build or from the server |
 | GET | `/devices` | admin | Devices whose pins can be moved: their pins (key, label, role, protocol, current, sketch default), whether a change needs a restart, and for each role the pins that can work (with `warn` for boot pins and `by` for who has a pin) |
 | PUT | `/devices/<id>/pins` | admin | `{"pins":{"<key>":4,"<key>":null},"confirm":"<device name>"}`: 422 with the reason for a pin that cannot work (flash, USB, input-only, not ADC1, already used, nonexistent) and for a missing `confirm` on a device that switches a load; GPIO pins apply at once, `restart:true` in the answer means the pins are used from the next start |
 | GET/PUT | `/webhook` · POST `/webhook/test` | admin |

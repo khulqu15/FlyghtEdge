@@ -25,9 +25,9 @@
 #endif
 
 #if CONFIG_IDF_TARGET_ESP32
-const int M_PWM = 25, M_IN1 = 26, M_IN2 = 27, ESC_PIN = 32, STEP = 14, DIR = 12, EN = 13, VALVE = 33;
+const int M_PWM = 25, M_IN1 = 26, M_IN2 = 27, ESC_PIN = 32, STEP = 14, DIR = 12, EN = 13, VALVE = 33, SERVO = 2, SERVO360 = 4;
 #else
-const int M_PWM = 4, M_IN1 = 5, M_IN2 = 6, ESC_PIN = 7, STEP = 15, DIR = 16, EN = 17, VALVE = 18;
+const int M_PWM = 4, M_IN1 = 5, M_IN2 = 6, ESC_PIN = 7, STEP = 15, DIR = 16, EN = 17, VALVE = 18, SERVO = 10, SERVO360 = 11;
 #endif
 
 fn::Device dev("motor-lab");
@@ -36,6 +36,8 @@ fn::DcMotor motor(M_PWM, M_IN1, M_IN2);
 fn::Esc esc(ESC_PIN);
 fn::Stepper stepper(STEP, DIR, EN);
 fn::Solenoid valve(VALVE, "valve", "Water valve", 30, 5);   // closes after 30 s, rests 5 s
+fn::Servo arm(SERVO, "arm", "Robot arm");                 // positional; MG996R-class, calibrate in the UI
+fn::Servo wheel(SERVO360, "wheel", "Drive wheel");         // continuous 360
 
 void setup() {
   Serial.begin(115200);
@@ -45,7 +47,9 @@ void setup() {
   stepper.maxSpeed(1000).acceleration(2000).limits(-4000, 4000);
 
   dev.license(FN_LICENSE_KEY);
-  dev.use(motor).use(esc).use(stepper).use(valve);
+  arm.preset("mg996r");
+  wheel.continuous();
+  dev.use(motor).use(esc).use(stepper).use(valve).use(arm).use(wheel);
   dev.begin();
 }
 

@@ -29,9 +29,10 @@ public:
   const char* title() const override { return "Flyght Cloud"; }
   const char* deps() const override { return "ui,?web"; }
 
-  // Code defaults (first boot); the dashboard / PUT /fn/api/v1/cloud can change them.
+  // Code defaults (first boot). The dashboard / PUT /fn/api/v1/cloud can change the switch and the
+  // key; the address is not a local setting (see CloudConfig.h).
   Cloud& enable(bool on = true) { defEnabled_ = on; return *this; }
-  Cloud& site(const char* url) { defSite_ = url; return *this; }     // a saved site wins over this
+  Cloud& site(const char* url) { defSite_ = url; return *this; }     // a site the server named wins over this
   Cloud& apiKey(const char* key) { defKey_ = key; return *this; }    // default: the key given to license()
 
   bool begin(App& app) override;

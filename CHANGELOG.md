@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.3.0 — 2026-10-16
+
+- **Servos.** `fn::Servo` drives a hobby servo on a 50 Hz signal, positional or 360 continuous, with
+  presets for MG90S, MG995, MG996R and SG90 and a calibration dialog that saves the pulse window per
+  servo; the pin is moved from the card like every other device. The `09_Motors` example and the
+  simulator show it.
+- **The cloud sees how a device is wired.** Once per connect, after the claim, the device publishes its
+  hardware inventory on `<base>/hw` (retained): the chip, every device with its pins, roles and
+  protocols, and the pins still free for each role — the same inventory `GET /fn/api/v1/devices` returns.
+- **The Flyght Cloud address is server-managed.** The dashboard card shows it but no longer offers it
+  as a setting, and `PUT /fn/api/v1/cloud` answers 403 to a body carrying `site` without changing
+  anything else in that request. A device still follows the address the server names in its claim and
+  config answers, and still falls back to the built-in one when that address stops answering. Point a
+  build of your own somewhere else with `dev.cloud().site(...)` or `-DFN_CLOUD_SITE=...`. Scripts that
+  set the address through the local API need to change; a device that saved an address from the old
+  dashboard keeps it until the server names another one or it is reset.
+
 ## 2.2.0 — 2026-10-13
 
 - **One menu on every screen size.** On a phone the side menu is a drawer you open with the menu button (rooms, device pages, Wi-Fi, Connect, Settings). The bottom tab bar and the page tabs on the dashboard are gone.
