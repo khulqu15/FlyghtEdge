@@ -120,6 +120,7 @@ dev.sched().every(5000, [] { /* every 5 s on the loop task */ });
 | `ConfigChanged` | | module id |
 | `Login` | role | client IP |
 | `TimeSynced` | | |
+| `StaExhausted` | seconds until the next round | last error |
 | `User` (1000+) | yours | yours |
 
 | `Bus` | Description |
@@ -212,10 +213,37 @@ the lock doubles on further failures.
 |---|---|
 | `ssid(tpl)` | Default `"{name}-{mac4}"`; templates from `App::expand` |
 | `password(pw)` | `""` = open; WPA2 needs ≥ 8 characters |
-| `mode(ApMode)` | `Always` (default), `Fallback` (only while Wi-Fi is down), `Off` |
+| `mode(ApMode)` | `Always` (default), `Fallback` (only while Wi-Fi is down), `Off`. In `Fallback` the AP returns 20 s after the station goes down. In `Off` it returns once the station has tried every saved network **and** has been down a minute, and in any case after 5 minutes, so a device is never left with no way in. Set a `password()`: the AP is open unless you give it one, and anyone on it delays the station's retries while they stay connected |
 | `ip(IPAddress)` | Default `192.168.4.1` |
 | `channel(ch)` / `maxClients(n)` | Radio settings |
 | `active()` / `address()` / `ssidNow()` | State |
+
+## StatusLed
+
+The onboard LED says what the device is doing when no dashboard and no serial are at hand. The
+`Device` preset drives it already; add `fn::StatusLed status(pin)` to put it on another pin. It
+stands down when something else owns that pin — a light of your own, or a default I2C, SPI or
+serial pin on boards that put the onboard LED there — and `dev.status().off()` switches it off.
+
+| Blinks per 3 s | Meaning |
+|---|---|
+| 3 quick | starting up |
+| 2 slow | the setup access point is waiting for a phone |
+| 2 fast | trying a saved Wi-Fi network |
+| 1 blip | on Wi-Fi |
+| 2 blips | on Wi-Fi and on Flyght Cloud |
+| 4 blinks | out of networks, waiting before it tries again |
+| fast and steady | the device has stopped |
+
+| Member | Description |
+|---|---|
+| `brightness(percent)` | Addressable pixel only, default 20 |
+| `activeLow(on)` | Plain LED wired to 3V3 |
+| `addressable(on)` | Override what the board reports |
+| `off()` | Leave the LED alone (`dev.status().off()`) |
+
+A board with an addressable pixel shows the same patterns in colour: white starting, blue on the
+setup access point, amber connecting, green on Wi-Fi, teal on the cloud, red with no network.
 
 ## Captive
 

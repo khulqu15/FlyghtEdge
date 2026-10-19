@@ -32,7 +32,7 @@ private:
   void routes(Web& web);
   struct Svc { String name, proto; uint16_t port; };
   std::vector<Svc> extra_;
-  bool ready_ = false, anyIf_ = false;
+  bool ready_ = false, anyIf_ = false, staUp_ = false;
   uint32_t refreshMs_ = 15UL * 60000, lastStart_ = 0, retryAt_ = 0, refreshes_ = 0, failures_ = 0;
   String reason_ = "boot", host_;
   uint16_t webPort_ = 80;

@@ -57,7 +57,7 @@ private:
   ApMode mode_ = ApMode::Always;
   uint8_t channel_ = 1, maxClients_ = 4;
   IPAddress ip_ = IPAddress(192, 168, 4, 1);
-  bool active_ = false, staUp_ = false;
+  bool active_ = false, staUp_ = false, staExhausted_ = false;
   uint8_t clients_ = 0;
   uint32_t staDownSince_ = 0, lastCheck_ = 0, starts_ = 0, recoveries_ = 0;
   char portalUri_[40] = {0};

@@ -11,7 +11,7 @@
 
 namespace fn {
 
-#define FN_VERSION "2.3.0"
+#define FN_VERSION "2.4.0"
 #define FN_API_VERSION 1
 
 // Copyright / license notice compiled into every firmware (boot log, GET /sys).
@@ -56,6 +56,7 @@ enum : uint16_t {
   ConfigChanged,     // s = module id
   Login,             // i = role, s = client ip
   TimeSynced,
+  StaExhausted,      // every saved network was tried; the station is backing off
   User = 1000        // first id free for applications
 };
 }  // namespace ev
@@ -137,6 +138,9 @@ public:
   virtual const char* title() const { return id(); }
   // Comma separated module ids this module needs; prefix with '?' if optional.
   virtual const char* deps() const { return ""; }
+  // A module that only reports state (a status LED) may keep its loop() while the app is
+  // stopped. Anything that acts on the world must leave this false.
+  virtual bool runsWhenHalted() const { return false; }
 
   // Called once, in dependency order. Return false to mark the module failed;
   // the rest of the app keeps running.

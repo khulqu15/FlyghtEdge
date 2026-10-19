@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.4.0 — 2026-10-19
+
+- **A device that cannot join Wi-Fi stays reachable.** With the access point set to *Off*, the only
+  way back used to be the five-minute safety net, so a device whose Wi-Fi did not answer was dark
+  for the whole window. The access point now returns once the station has tried every saved network
+  and has been down a minute; the five-minute net stays as a backstop. Give the access point a
+  `password()` if you rely on *Off*: it is open unless you set one.
+- **`<host>.local` keeps answering after the access point stops.** mDNS is announced again whenever
+  an interface comes or goes, not only when the station gets an IP. The access point stops a few
+  seconds after the station connects, which is exactly when a phone on the same network starts
+  looking for the device.
+- **The onboard LED says what the device is doing** (`fn::StatusLed`, part of the `Device` preset):
+  3 quick blinks starting, 2 slow on the setup access point, 2 fast while connecting, 1 blip on
+  Wi-Fi, 2 blips on Wi-Fi and the cloud, 4 blinks out of networks, fast and steady when stopped. A
+  board with an addressable pixel shows the same patterns in colour. It stands down when a light of
+  your own owns the pin.
+
 ## 2.3.0 — 2026-10-16
 
 - **Servos.** `fn::Servo` drives a hobby servo on a 50 Hz signal, positional or 360 continuous, with

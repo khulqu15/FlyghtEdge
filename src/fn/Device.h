@@ -13,6 +13,7 @@
 #include "auth/Auth.h"
 #include "cloud/Cloud.h"
 #include "core/App.h"
+#include "dev/StatusLed.h"
 #include "hook/Webhook.h"
 #include "mqtt/Mqtt.h"
 #include "net/Ap.h"
@@ -42,10 +43,12 @@ public:
   Webhook& webhook() { return webhook_; }
   Cloud& cloud() { return cloud_; }
   System& system() { return system_; }
+  StatusLed& status() { return status_; }
 
   // Extra modules of your own can still be added before begin().
   void begin() override {
     use(web_).use(auth_).use(system_).use(ap_).use(captive_).use(wifi_).use(mdns_).use(ui_).use(mqtt_).use(webhook_).use(cloud_);
+    use(status_);  // last: a light of the sketch's own claims the onboard LED first
     App::begin();
   }
 
@@ -61,6 +64,7 @@ private:
   Mqtt mqtt_;
   Webhook webhook_;
   Cloud cloud_;
+  StatusLed status_;
 };
 
 }  // namespace fn

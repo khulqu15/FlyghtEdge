@@ -35,6 +35,8 @@ public:
   void describe(JsonRef out) const override;
 
   bool connected() const { return state_ == State::Connected; }
+  bool trying() const { return state_ == State::Connecting; }     // an attempt is on the air now
+  bool configured() const { return !nets_.empty(); }              // at least one network is saved
   String ssid() const { return connected() ? currentSsid_ : String(); }
   // Adds or updates a network with top priority and connects now.
   void connectNow(const String& ssid, const String& pass);
